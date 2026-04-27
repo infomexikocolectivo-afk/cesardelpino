@@ -42,4 +42,30 @@ const {
     </main>
     <Footer lang={lang} />
   </body>
+
+  <script>
+    function initReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          target.classList.add('revealed');
+          observer.unobserve(target);
+        });
+      }, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+
+      document.querySelectorAll('.reveal').forEach((el) => {
+        const siblings = Array.from(el.parentElement?.children ?? [])
+          .filter(c => c.classList.contains('reveal'));
+        const idx = siblings.indexOf(el as Element);
+        if (idx > 0) (el as HTMLElement).style.setProperty('--reveal-delay', `${idx * 0.09}s`);
+        observer.observe(el);
+      });
+    }
+
+    if (document.readyState === 'complete') {
+      initReveal();
+    } else {
+      window.addEventListener('load', initReveal, { once: true });
+    }
+  </script>
 </html>

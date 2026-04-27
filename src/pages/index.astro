@@ -1,6 +1,9 @@
 ---
 // index.astro - Home page (Spanish default)
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-cempasuchil.jpg';
+import omeImage from '../assets/images/ome-raiz-396hz.jpg';
 
 const pageTitle = 'César Del Pino — Sonic Anthropologist · Sound Artist & Composer';
 const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist & Composer con obra en Netflix, TNT Russia, Cirque du Soleil, Museo Rambalkoshe y estudio Kanye West. En la intersección de antropología, composición e ingeniería sonora.';
@@ -15,6 +18,18 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
 <!-- HERO -->
 <section class="hero">
+  <figure class="hero-image">
+    <Image
+      src={heroImage}
+      alt="Retrato de espaldas en campo de cempasúchil al atardecer"
+      width={1200}
+      height={1200}
+      quality={85}
+      loading="eager"
+      fetchpriority="high"
+    />
+  </figure>
+
   <div class="hero-corners-top">
     <div class="corner-label">
       <span class="dot"></span>
@@ -28,15 +43,58 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
   <div class="hero-center">
     <h1 class="hero-manifesto">
-      El sonido es la primera arquitectura.
-      <span class="line-2"><em>Construyo</em> espacios para que algo suceda dentro.</span>
+      <span class="sentence">Soy <span class="name-gold">César Del Pino</span>.</span>
+      <span class="sentence s-thin"><b>Productor</b> musical y compositor.</span>
     </h1>
 
-    <div class="hero-meta">
+    <div class="hero-rotator" aria-hidden="true">
+      <span class="rotator-prefix">Hago <b>sonido</b> para</span>
+      <div class="rotator-track">
+        <span class="rword-spacer">investigaciones.</span>
+        <span class="rword" style="--n:0">cine.</span>
+        <span class="rword" style="--n:1">marcas.</span>
+        <span class="rword" style="--n:2">museos.</span>
+        <span class="rword" style="--n:3">clubes.</span>
+        <span class="rword" style="--n:4">restaurantes.</span>
+        <span class="rword" style="--n:5">experiencias.</span>
+        <span class="rword" style="--n:6">redes sociales.</span>
+        <span class="rword" style="--n:7">investigaciones.</span>
+      </div>
+    </div>
+
+    <div class="hero-meta reveal">
       <div class="hero-meta-label">Selected works<br />2014—2026</div>
       <div class="hero-credentials">
-        Sound Artist &amp; Composer<span class="sep">·</span>Obra en Netflix<span class="sep">·</span>Museo Rambalkoshe (AM)
+        <div class="cred-role">He trabajado con:</div>
+        <ul class="cred-works">
+          <li>
+            <span class="cw-name">Netflix</span>
+            <span class="cw-tag">Score · 2020—</span>
+          </li>
+          <li>
+            <span class="cw-name">Kanye West / Plaza de Toros</span>
+            <span class="cw-tag">Studio Design · 2026</span>
+          </li>
+          <li>
+            <span class="cw-name">Janax Pacha · Elea Colective</span>
+            <span class="cw-tag">Producción e ingeniería · 2025</span>
+          </li>
+          <li>
+            <span class="cw-name">AMMEV Congreso Doula</span>
+            <span class="cw-tag">Experiencia sonora · General Prim · 2025</span>
+          </li>
+          <li>
+            <span class="cw-name">Museo Rambalkoshe</span>
+            <span class="cw-tag">Live Installation · Armenia · 2020</span>
+          </li>
+        </ul>
       </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-label">Scroll</span>
+      <span class="scroll-line"></span>
+      <span class="scroll-arrow">↓</span>
     </div>
   </div>
 
@@ -50,19 +108,20 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
       <span class="dot"></span>
     </div>
   </div>
+
 </section>
 
 <!-- WORKS / SELECTED WORKS -->
 <section class="section section-works" id="works">
   <div class="section-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-number">
         <span class="num">01</span> &nbsp;&nbsp; Obra seleccionada
       </div>
       <div class="section-title-wrap">
-        <h2 class="section-title">Una práctica que <em>cruza</em> mundos: cine, museo, broadcast e instituciones.</h2>
+        <h2 class="section-title"><b>Trabajo cruzando mundos:</b> <em>cine</em>, museo, broadcast e instituciones.</h2>
         <p class="section-intro">
-          Doce años de obra en formatos donde el sonido construye sentido. Selección curada de proyectos verificables.
+          Llevo <span class="year-counter" aria-label="12"><span class="ynum-spacer">12</span><span class="ynum" style="--y:0">9</span><span class="ynum" style="--y:1">10</span><span class="ynum" style="--y:2">11</span><span class="ynum" style="--y:3">12</span></span> años en formatos donde el sonido construye sentido. Esta es una selección curada de proyectos verificables.
         </p>
       </div>
     </div>
@@ -70,135 +129,186 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
     <div class="works-grid">
 
       <!-- BLOCK 01 — SCORE -->
-      <article class="work-block">
-        <div class="work-cat"><span class="num">01</span> Score</div>
-        <h3 class="work-title">Composición para cine y broadcast</h3>
-        <ul class="work-list">
-          <li>
-            <div class="item-row">
-              <span class="item-name">Netflix</span>
-              <span class="item-year">2020—</span>
-            </div>
-            <span class="detail">Original score · sync deals</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">TNT Russia</span>
-              <span class="item-year">2021</span>
-            </div>
-            <span class="detail">НОВЫЕ ТАНЦЫ · Final con J. Kotseva</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Cirque du Soleil</span>
-              <span class="item-year">2022</span>
-            </div>
-            <span class="detail">Tracks · Guy Laliberté curation</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Las Hijas del Mezcal</span>
-              <span class="item-year">2024</span>
-            </div>
-            <span class="detail">Documental largometraje</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Muro</span>
-              <span class="item-year">2023</span>
-            </div>
-            <span class="detail">Dir. Jimena Huezca</span>
-          </li>
-        </ul>
-        <a href="/sobre/" class="work-cv-link">
-          Ver CV completo <span class="arrow">→</span>
-        </a>
-      </article>
+      <details class="work-block service-accordion reveal">
+        <summary class="service-accordion__title">
+          <div class="service-accordion__header">
+            <span class="service-accordion__label work-cat"><span class="num">01</span> Score</span>
+            <h3 class="work-title">Composición para cine y broadcast</h3>
+          </div>
+          <span class="service-accordion__icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="service-accordion__content">
+          <ul class="work-list">
+            <li>
+              <div class="item-row">
+                <span class="item-name">Netflix</span>
+                <span class="item-year">2020—</span>
+              </div>
+              <span class="item-area">Score</span>
+              <span class="detail">Original score · sync deals</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Las Hijas del Mezcal</span>
+                <span class="item-year">2024</span>
+              </div>
+              <span class="item-area">Score</span>
+              <span class="detail">Documental largometraje</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Cirque du Soleil</span>
+                <span class="item-year">2022</span>
+              </div>
+              <span class="item-area">Score</span>
+              <span class="detail">Tracks · curation Guy Laliberté</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">TNT Russia</span>
+                <span class="item-year">2021</span>
+              </div>
+              <span class="item-area">Score</span>
+              <span class="detail">НОВЫЕ ТАНЦЫ · Final J. Kotseva</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Muro</span>
+                <span class="item-year">2023</span>
+              </div>
+              <span class="item-area">Score</span>
+              <span class="detail">Cortometraje · Dir. Jimena Huezca</span>
+            </li>
+          </ul>
+          <a href="/sobre/" class="work-cv-link">
+            Ver CV completo <span class="arrow">→</span>
+          </a>
+        </div>
+      </details>
 
       <!-- BLOCK 02 — SOUND DESIGN -->
-      <article class="work-block">
-        <div class="work-cat"><span class="num">02</span> Sound Design</div>
-        <h3 class="work-title">Identidad sonora institucional &amp; de marca</h3>
-        <ul class="work-list">
-          <li>
-            <div class="item-row">
-              <span class="item-name">Senado de la República</span>
-              <span class="item-year">2024</span>
-            </div>
-            <span class="detail">Sound design oficial</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">INEGI</span>
-              <span class="item-year">2023</span>
-            </div>
-            <span class="detail">Identidad institucional</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">INE</span>
-              <span class="item-year">2018</span>
-            </div>
-            <span class="detail">Diseño sonoro de campaña</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Jägermeister</span>
-              <span class="item-year">2019</span>
-            </div>
-            <span class="detail">Historias Sonoras · ingeniería</span>
-          </li>
-        </ul>
-        <a href="/sobre/" class="work-cv-link">
-          Ver CV completo <span class="arrow">→</span>
-        </a>
-      </article>
+      <details class="work-block service-accordion reveal">
+        <summary class="service-accordion__title">
+          <div class="service-accordion__header">
+            <span class="service-accordion__label work-cat"><span class="num">02</span> Sound Design</span>
+            <h3 class="work-title">Identidad sonora institucional &amp; de marca</h3>
+          </div>
+          <span class="service-accordion__icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="service-accordion__content">
+          <ul class="work-list">
+            <li>
+              <div class="item-row">
+                <span class="item-name">Senado de la República</span>
+                <span class="item-year">2024</span>
+              </div>
+              <span class="item-area">Sound Design</span>
+              <span class="detail">Identidad sonora oficial</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">INEGI</span>
+                <span class="item-year">2023</span>
+              </div>
+              <span class="item-area">Sound Design</span>
+              <span class="detail">Identidad institucional</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Jägermeister</span>
+                <span class="item-year">2019</span>
+              </div>
+              <span class="item-area">Sound Design</span>
+              <span class="detail">Historias Sonoras · ingeniería</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">INE</span>
+                <span class="item-year">2018</span>
+              </div>
+              <span class="item-area">Sound Design</span>
+              <span class="detail">Diseño sonoro de campaña</span>
+            </li>
+          </ul>
+          <a href="/sobre/" class="work-cv-link">
+            Ver CV completo <span class="arrow">→</span>
+          </a>
+        </div>
+      </details>
 
       <!-- BLOCK 03 — STUDIO & LIVE -->
-      <article class="work-block">
-        <div class="work-cat"><span class="num">03</span> Studio &amp; Live</div>
-        <h3 class="work-title">Diseño técnico, museo y performance</h3>
-        <ul class="work-list">
-          <li>
-            <div class="item-row">
-              <span class="item-name">Kanye West / Plaza de Toros</span>
-              <span class="item-year">2024</span>
-            </div>
-            <span class="detail">Studio design &amp; engineering · CDMX</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Museo Rambalkoshe</span>
-              <span class="item-year">2020</span>
-            </div>
-            <span class="detail">Live installation · Armenia</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">MAIA Contemporary</span>
-              <span class="item-year">2023</span>
-            </div>
-            <span class="detail">Galería arte contemporáneo · CDMX</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Galería Málaga</span>
-              <span class="item-year">2023</span>
-            </div>
-            <span class="detail">Performance galería · CDMX</span>
-          </li>
-          <li>
-            <div class="item-row">
-              <span class="item-name">Burning Man · Maxa Camp CDMX</span>
-              <span class="item-year">2022</span>
-            </div>
-            <span class="detail">Set ceremonial</span>
-          </li>
-        </ul>
-        <a href="/sobre/" class="work-cv-link">
-          Ver CV completo <span class="arrow">→</span>
-        </a>
-      </article>
+      <details class="work-block service-accordion reveal">
+        <summary class="service-accordion__title">
+          <div class="service-accordion__header">
+            <span class="service-accordion__label work-cat"><span class="num">03</span> Studio &amp; Live</span>
+            <h3 class="work-title">Diseño técnico, museo y performance</h3>
+          </div>
+          <span class="service-accordion__icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="service-accordion__content">
+          <ul class="work-list">
+            <li>
+              <div class="item-row">
+                <span class="item-name">Kanye West / Plaza de Toros</span>
+                <span class="item-year">2026</span>
+              </div>
+              <span class="item-area">Studio Design &amp; Engineering</span>
+              <span class="detail">Diseño y habilitación de estudio · CDMX</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Janax Pacha · Elea Colective</span>
+                <span class="item-year">2025</span>
+              </div>
+              <span class="item-area">Producción e ingeniería de audio</span>
+              <span class="detail">Museo de Antropología · CDMX</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">AMMEV Congreso Doula</span>
+                <span class="item-year">2025</span>
+              </div>
+              <span class="item-area">Experiencia sonora</span>
+              <span class="detail">General Prim · CDMX</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">MAIA Contemporary</span>
+                <span class="item-year">2023</span>
+              </div>
+              <span class="item-area">Live performance</span>
+              <span class="detail">Galería arte contemporáneo · CDMX</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Galería Málaga</span>
+                <span class="item-year">2023</span>
+              </div>
+              <span class="item-area">Live performance</span>
+              <span class="detail">Performance en galería · CDMX</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Burning Man · Maxa Camp</span>
+                <span class="item-year">2022</span>
+              </div>
+              <span class="item-area">Live performance</span>
+              <span class="detail">Set ceremonial · CDMX</span>
+            </li>
+            <li>
+              <div class="item-row">
+                <span class="item-name">Museo Rambalkoshe</span>
+                <span class="item-year">2020</span>
+              </div>
+              <span class="item-area">Instalación live · Armenia</span>
+              <span class="detail">Live installation · Museo Rambalkoshe</span>
+            </li>
+          </ul>
+          <a href="/sobre/" class="work-cv-link">
+            Ver CV completo <span class="arrow">→</span>
+          </a>
+        </div>
+      </details>
 
     </div>
   </div>
@@ -207,10 +317,10 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 <!-- STUDIO / SERVICES -->
 <section class="section section-studio" id="studio">
   <div class="section-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-number"><span class="num">02</span> &nbsp;&nbsp; Estudio</div>
       <div class="section-title-wrap">
-        <h2 class="section-title">Cinco prácticas. Una <em>misma</em> escucha.</h2>
+        <h2 class="section-title">Cinco prácticas. <b>Una <em>misma</em> escucha.</b></h2>
         <p class="section-intro">
           Cada práctica es un modo distinto de trabajar el sonido. Eligen una, o conversamos para encontrar la combinación que su proyecto pide.
         </p>
@@ -218,35 +328,35 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
     </div>
 
     <div class="studio-list">
-      <a href="/servicios/diseno-sonoro/" class="studio-item">
+      <a href="/servicios/diseno-sonoro/" class="studio-item reveal">
         <div class="studio-num">01</div>
         <div class="studio-name">Diseño <em>sonoro</em></div>
         <div class="studio-desc">Identidad sonora para marcas, narrativas audiovisuales y experiencias inmersivas.</div>
         <div class="studio-arrow">↗</div>
       </a>
 
-      <a href="/servicios/produccion-musical/" class="studio-item">
+      <a href="/servicios/produccion-musical/" class="studio-item reveal">
         <div class="studio-num">02</div>
         <div class="studio-name">Producción <em>musical</em></div>
         <div class="studio-desc">De la idea al máster. Acompañamiento integral en arreglo, grabación, programación.</div>
         <div class="studio-arrow">↗</div>
       </a>
 
-      <a href="/servicios/mix-mastering/" class="studio-item">
+      <a href="/servicios/mix-mastering/" class="studio-item reveal">
         <div class="studio-num">03</div>
         <div class="studio-name">Mix &amp; <em>Mastering</em></div>
         <div class="studio-desc">Mezcla profesional y mastering analógico-híbrido. Listo para club, streaming, vinilo, cine.</div>
         <div class="studio-arrow">↗</div>
       </a>
 
-      <a href="/servicios/musica-original/" class="studio-item">
+      <a href="/servicios/musica-original/" class="studio-item reveal">
         <div class="studio-num">04</div>
         <div class="studio-name">Música <em>original</em></div>
         <div class="studio-desc">Composición a medida para cine, publicidad, instalaciones, proyectos editoriales.</div>
         <div class="studio-arrow">↗</div>
       </a>
 
-      <a href="/servicios/ome-dj/" class="studio-item">
+      <a href="/servicios/ome-dj/" class="studio-item reveal">
         <div class="studio-num">05</div>
         <div class="studio-name">Ōme <em>— DJ &amp; Live</em></div>
         <div class="studio-desc">Sets ceremoniales para eventos curados, festivales y experiencias rituales.</div>
@@ -263,23 +373,24 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
     <span class="label">El proyecto musical</span>
   </div>
 
-  <div class="ome-grid">
-    <div class="ome-circles">
-      <div class="ome-circle c1"></div>
-      <div class="ome-circle c2"></div>
-      <div class="ome-circle c3"></div>
-      <div class="ome-circle c4">
-        <div class="ome-symbol">Ō</div>
-      </div>
-    </div>
+  <div class="ome-inner reveal">
+    <figure class="ome-header">
+      <Image
+        src={omeImage}
+        alt="Sesión sonora inmersiva — proyecto musical Ome"
+        width={2000}
+        height={1333}
+        quality={85}
+        loading="lazy"
+      />
+    </figure>
 
     <div class="ome-text">
-      <div class="ome-eyebrow">— Ōme —</div>
       <h2 class="ome-headline">
         Un universo sonoro donde lo <em>ritual</em> encuentra el dancefloor.
       </h2>
       <p class="ome-description">
-        El proyecto musical de César Del Pino. Tracks, sets y experiencias en la frontera entre percusión tribal, house orgánico y melodías ancestrales. Sonido para cuerpos en movimiento y espíritus en escucha.
+        Es mi proyecto musical. Tracks, sets y experiencias en la frontera entre percusión tribal, house orgánico y melodías antropológicas de diversas culturas. Hago sonido para cuerpos en movimiento y espíritus en escucha.
       </p>
 
       <div class="ome-stats">
@@ -313,51 +424,51 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
     </div>
 
     <div class="releases-list">
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">01</div>
         <div class="release-name">Casa Caos</div>
         <div class="release-country">BR</div>
         <div class="release-year">2018</div>
         <div class="release-arrow">↗</div>
       </div>
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">02</div>
         <div class="release-name">LNDKHN</div>
         <div class="release-country">IBZ</div>
         <div class="release-year">2019</div>
         <div class="release-arrow">↗</div>
       </div>
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">03</div>
         <div class="release-name">Rambalkoshe</div>
         <div class="release-country">AM</div>
         <div class="release-year">2020</div>
         <div class="release-arrow">↗</div>
       </div>
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">04</div>
         <div class="release-name">Afterhour Sounds</div>
         <div class="release-country">DE</div>
         <div class="release-year">2022</div>
         <div class="release-arrow">↗</div>
       </div>
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">05</div>
         <div class="release-name">Supermatic Sounds</div>
         <div class="release-country">UK</div>
         <div class="release-year">2023</div>
         <div class="release-arrow">↗</div>
       </div>
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">06</div>
         <div class="release-name">TRNDMUSIK</div>
         <div class="release-country">DE</div>
         <div class="release-year">2023</div>
         <div class="release-arrow">↗</div>
       </div>
-      <div class="release-row">
+      <div class="release-row reveal">
         <div class="release-num">07</div>
-        <div class="release-name">Levela</div>
+        <div class="release-name">Levelva</div>
         <div class="release-country">RU</div>
         <div class="release-year">2023</div>
         <div class="release-arrow">↗</div>
@@ -369,7 +480,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 <!-- BITACORA -->
 <section class="section section-bitacora" id="bitacora">
   <div class="section-inner">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-number"><span class="num">03</span> &nbsp;&nbsp; Bitácora sonora</div>
       <div class="section-title-wrap">
         <h2 class="section-title">Notas, ensayos y <em>procesos</em> abiertos.</h2>
@@ -380,7 +491,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
     </div>
 
     <div class="bitacora-grid">
-      <a href="/bitacora/fenomenologia-musical/" class="post-card">
+      <a href="/bitacora/fenomenologia-musical/" class="post-card reveal">
         <div class="post-meta-row">
           <span class="post-cat">Antropología</span>
           <span class="post-date">15 · ABR · 2026</span>
@@ -390,7 +501,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
         <div class="post-readmore">Leer <span class="arrow">→</span></div>
       </a>
 
-      <a href="#" class="post-card">
+      <a href="#" class="post-card reveal">
         <div class="post-meta-row">
           <span class="post-cat">Sistema</span>
           <span class="post-date">02 · ABR · 2026</span>
@@ -400,7 +511,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
         <div class="post-readmore">Leer <span class="arrow">→</span></div>
       </a>
 
-      <a href="#" class="post-card">
+      <a href="#" class="post-card reveal">
         <div class="post-meta-row">
           <span class="post-cat">Diseño Sonoro</span>
           <span class="post-date">20 · MAR · 2026</span>
@@ -415,7 +526,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
 <!-- CREDENTIALS -->
 <section class="section-credentials">
-  <div class="credentials-inner">
+  <div class="credentials-inner reveal">
     <div class="credentials-label">— Formación &amp; tutela</div>
     <div class="credentials-content">
       <div class="cred-line">
@@ -438,6 +549,67 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 </BaseLayout>
 
 <style>
+/* HERO IMAGE */
+.hero-image {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+/* Film grain — doble capa con background-position (no transform)
+   inset: -50%    → canvas más grande que el contenedor, bordes nunca visibles
+   seed 5 / 17    → dos patrones distintos para efecto orgánico
+   opacity: 0.35  → intensidad (ajustar entre 0.20–0.50) */
+.hero-image::after,
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 10;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='2' stitchTiles='stitch' seed='5'/><feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  opacity: 0.18;
+  animation: grain 0.8s steps(8) infinite;
+}
+
+.hero-image::before {
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='2' stitchTiles='stitch' seed='17'/><feColorMatrix values='0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation-delay: 0.4s;
+}
+
+@keyframes grain {
+  0%, 100% { background-position: 0 0; }
+  12.5%    { background-position: -50px 30px; }
+  25%      { background-position: 30px -40px; }
+  37.5%    { background-position: -40px -30px; }
+  50%      { background-position: 50px 40px; }
+  62.5%    { background-position: -30px 50px; }
+  75%      { background-position: 40px -50px; }
+  87.5%    { background-position: -50px -20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image::after,
+  .hero-image::before { animation: none; }
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(1.08) saturate(1.05) contrast(1.02);
+}
+
+@media (max-width: 768px) {
+  .hero-image { max-width: 100%; margin-bottom: 2rem; }
+}
+
 /* HERO */
 .hero {
   min-height: 100vh;
@@ -496,27 +668,125 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
 .hero-manifesto {
   font-family: var(--font-display);
-  font-size: clamp(56px, 8.2vw, 132px);
+  font-size: clamp(46px, 6.6vw, 94px);
   font-weight: 300;
   line-height: 0.98;
   letter-spacing: -0.03em;
   color: var(--text-primary);
   font-variation-settings: "opsz" 144, "SOFT" 30;
-  margin-bottom: 64px;
-  max-width: 1200px;
+  margin-bottom: 16px;
+  max-width: 1100px;
 }
 
-.hero-manifesto .line-2 {
+.name-gold {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.sentence {
   display: block;
+  margin-bottom: 0.1em;
+}
+
+.sentence:last-child { margin-bottom: 0; }
+
+.s-thin {
+  font-weight: 200;
+}
+
+.sentence.s3 {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.hero-manifesto b {
+  font-weight: 700;
+  font-style: inherit;
+}
+
+.b-red {
+  color: var(--accent-blood);
+}
+
+.y-mas {
+  font-weight: 200;
+}
+
+/* Text rotator */
+.hero-rotator {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.rotator-prefix,
+.rotator-suffix {
+  font-family: var(--font-display);
+  font-size: clamp(46px, 6.6vw, 94px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+
+.rotator-prefix { white-space: nowrap; }
+.rotator-prefix b { font-weight: 700; }
+
+.rotator-track {
+  position: relative;
+  font-size: clamp(46px, 6.6vw, 94px);
+  height: 1.1em;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.rword-spacer {
+  display: block;
+  visibility: hidden;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
   font-variation-settings: "opsz" 144, "SOFT" 100;
-  margin-top: 0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 }
 
-.hero-manifesto .line-2 em {
-  color: var(--accent-blood);
+.rword {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
   font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--accent-blood);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: word-rotate 20s infinite;
+  animation-delay: calc(var(--n) * 2.5s);
+}
+
+@keyframes word-rotate {
+  0%     { opacity: 0; transform: translateY(30px); }
+  1.25%  { opacity: 1; transform: translateY(0); }
+  11.25% { opacity: 1; transform: translateY(0); }
+  12.5%  { opacity: 0; transform: translateY(-30px); }
+  12.51% { opacity: 0; transform: translateY(30px); }
+  100%   { opacity: 0; transform: translateY(30px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rword { animation: none; opacity: 0; }
+  .rword[style="--n:0"] { opacity: 1; transform: translateY(0); }
 }
 
 .hero-meta {
@@ -542,18 +812,99 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 }
 
 .hero-credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cred-role {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.4;
   letter-spacing: -0.01em;
   color: var(--text-primary);
   font-variation-settings: "opsz" 36, "SOFT" 50;
+  padding-bottom: 16px;
+  margin-bottom: 4px;
 }
 
-.hero-credentials .sep {
-  color: var(--accent-gold);
-  margin: 0 8px;
+.cred-works {
+  list-style: none;
+  width: 100%;
+}
+
+.cred-works li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-line);
+}
+
+.cw-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+}
+
+.cw-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-blood);
+  font-weight: 500;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* Year counter (9→12 loop) */
+.year-counter {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.4em;
+  vertical-align: -0.3em;
+  line-height: 1.4;
+  margin-right: 0.2em;
+}
+
+.ynum-spacer {
+  display: inline-block;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+  font-weight: 500;
+}
+
+.ynum {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(1em);
+  color: var(--accent-blood);
+  font-weight: 500;
+  animation: year-spin 6s linear infinite;
+  animation-delay: calc(var(--y) * 1.5s);
+}
+
+@keyframes year-spin {
+  0%     { opacity: 0; transform: translateY(1em); }
+  4%     { opacity: 1; transform: translateY(0); }
+  22%    { opacity: 1; transform: translateY(0); }
+  25%    { opacity: 0; transform: translateY(-1em); }
+  25.1%  { opacity: 0; transform: translateY(1em); }
+  100%   { opacity: 0; transform: translateY(1em); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ynum { animation: none; opacity: 0; }
+  .ynum[style="--y:3"] { opacity: 1; transform: translateY(0); }
 }
 
 /* SECTION GENERAL */
@@ -579,7 +930,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
 .section-number .num { color: var(--accent-blood); font-weight: 500; }
 
-.section-title-wrap { max-width: 800px; }
+.section-title-wrap { max-width: 1100px; }
 
 .section-title {
   font-family: var(--font-display);
@@ -591,6 +942,8 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   font-variation-settings: "opsz" 144, "SOFT" 30;
   margin-bottom: 32px;
 }
+
+.section-title b { font-weight: 600; }
 
 .section-title em {
   font-style: italic;
@@ -608,18 +961,80 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   font-variation-settings: "opsz" 36;
 }
 
+/* ACCORDION */
+.service-accordion {
+  border-top: 1px solid var(--border-line);
+  padding: 0;
+}
+
+.service-accordion:last-of-type {
+  border-bottom: 1px solid var(--border-line);
+}
+
+.service-accordion__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.service-accordion__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.service-accordion__title::-webkit-details-marker { display: none; }
+.service-accordion__title::marker { display: none; }
+
+.service-accordion__title:hover { color: var(--accent-blood); }
+.service-accordion__title:hover .num { color: var(--accent-blood); }
+
+.service-accordion__icon {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--accent-blood);
+  transition: transform 0.3s ease;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.service-accordion[open] .service-accordion__icon {
+  transform: rotate(45deg);
+}
+
+.service-accordion__content {
+  padding: 0 0 2rem;
+  animation: accordion-open 0.35s ease-out;
+}
+
+@keyframes accordion-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-accordion__icon { transition: none; }
+  .service-accordion__content { animation: none; }
+}
+
 /* WORKS */
-.section-works { border-top: 1px solid var(--border-line); }
+.section-works { border-top: 1px solid var(--border-line); padding-bottom: 0; }
 
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 280px));
   gap: 0;
   border-top: 1px solid var(--border-line);
 }
 
 .work-block {
-  padding: 48px 32px;
+  padding: 24px 24px;
   border-right: 1px solid var(--border-line);
   display: flex;
   flex-direction: column;
@@ -659,12 +1074,24 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 .work-list li {
   font-size: 14px;
   color: var(--text-primary);
-  padding: 12px 0;
+  padding: 8px 0;
   border-top: 1px solid var(--border-line);
   line-height: 1.5;
 }
 
 .work-list li:first-child { border-top: 1px solid var(--text-primary); }
+
+.item-area {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-blood);
+  font-weight: 500;
+  margin-top: 3px;
+  opacity: 0.75;
+}
 
 .item-row {
   display: flex;
@@ -782,7 +1209,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 .section-ome {
   background: var(--bg-deep);
   color: var(--text-on-deep);
-  padding: 180px 56px;
+  padding: 120px 56px 180px;
   position: relative;
   overflow: hidden;
 }
@@ -819,67 +1246,31 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   color: var(--text-on-deep);
 }
 
-.ome-grid {
+.ome-inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 80px;
-  align-items: center;
   position: relative;
 }
 
-.ome-circles {
-  position: relative;
+.ome-header {
   width: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 0 3rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
-.ome-circle {
-  position: absolute;
-  border: 1px solid rgba(237, 232, 221, 0.2);
-  border-radius: 50%;
-  transition: transform 0.6s ease;
-}
-
-.ome-circle.c1 { width: 100%; height: 100%; }
-.ome-circle.c2 { width: 75%; height: 75%; border-color: rgba(168, 133, 74, 0.3); }
-.ome-circle.c3 { width: 50%; height: 50%; border-color: rgba(110, 31, 26, 0.5); }
-.ome-circle.c4 {
-  width: 28%;
-  height: 28%;
-  background: var(--accent-blood);
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ome-symbol {
-  font-family: var(--font-display);
-  font-size: 64px;
-  font-weight: 300;
-  color: var(--text-on-deep);
-  font-style: italic;
-  font-variation-settings: "opsz" 144, "SOFT" 100;
+.ome-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .ome-text {
   display: flex;
   flex-direction: column;
   gap: 32px;
-}
-
-.ome-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent-gold);
-  font-weight: 500;
+  max-width: 720px;
 }
 
 .ome-headline {
@@ -1185,9 +1576,11 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
-  .ome-grid { grid-template-columns: 1fr; gap: 56px; }
-  .ome-circles { max-width: 500px; margin: 0 auto; }
   .credentials-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .ome-header { aspect-ratio: 4 / 3; margin-bottom: 2rem; }
 }
 
 @media (max-width: 980px) {
@@ -1198,17 +1591,118 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   .studio-desc { display: none; }
 }
 
+/* Scroll hint */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  pointer-events: none;
+}
+
+.scroll-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: var(--text-muted);
+  opacity: 0.5;
+  animation: scroll-drop 2.4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.scroll-arrow {
+  font-size: 14px;
+  color: var(--text-muted);
+  animation: scroll-drop 2.4s ease-in-out infinite 0.15s;
+  display: block;
+  line-height: 1;
+}
+
+@keyframes scroll-drop {
+  0%, 100% { opacity: 0.2; transform: translateY(-3px); }
+  50%       { opacity: 0.9; transform: translateY(3px); }
+}
+
 @media (max-width: 700px) {
   .hero, .section, .section-ome, .section-releases, .section-credentials {
     padding-left: 24px;
     padding-right: 24px;
   }
-  .hero { padding-top: 100px; padding-bottom: 32px; }
-  .hero-corners-top, .hero-corners-bottom { gap: 16px; }
-  .corner-label { font-size: 10px; }
+  .hero { padding-top: 88px; padding-bottom: 32px; }
+
+  /* Corner labels: hide bottom on mobile, keep top */
+  .hero-corners-top { gap: 8px; }
+  .hero-corners-bottom { display: none; }
+  .corner-label { font-size: 9px; letter-spacing: 0.18em; gap: 8px; }
+
+  /* Hero center */
+  .hero-center { padding: 32px 0 24px; }
+
+  /* Hero meta: stacked on mobile */
+  .hero-meta {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  .hero-meta-label { width: auto; padding-top: 0; }
+  .hero-credentials { font-size: 16px; line-height: 1.5; }
+
+  /* Rotator mobile: flow natural con wrap */
+  .hero-rotator { align-items: baseline; gap: 8px; margin-bottom: 28px; }
+
+  /* Scroll hint */
+  .scroll-hint { margin-top: 28px; }
+  .scroll-line { height: 28px; }
+
+  /* Section headers */
   .section-header { grid-template-columns: 1fr; gap: 24px; }
-  .release-row { grid-template-columns: 30px 1fr 50px 50px; gap: 12px; }
+
+  /* Studio: show description on mobile */
+  .studio-item {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 2px 16px;
+    padding: 20px 0;
+    align-items: start;
+  }
+  .studio-num { display: none; }
+  .studio-name {
+    font-size: 26px;
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .studio-desc {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 12px;
+    color: var(--text-muted);
+    max-width: none;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .studio-arrow {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    font-size: 15px;
+  }
+
+  /* Releases */
+  .release-row { grid-template-columns: 28px 1fr 36px 40px; gap: 8px; padding: 16px 0; }
+  .release-name { font-size: 18px; }
   .release-arrow { display: none; }
+
+  /* Ōme */
   .ome-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
   .ome-symbol { font-size: 48px; }
 }
