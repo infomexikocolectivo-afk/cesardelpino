@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('bitacora', ({ data }) => !data.draft);
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const categoryLabels: Record<string, string> = {
+  'ensayos': 'Ensayo',
+  'notas-de-campo': 'Nota de campo',
+  'procesos': 'Proceso',
+  'glosario': 'Glosario',
+};
+
+function formatDate(date: Date) {
+  const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+}
+---
+
+<BaseLayout
+  title="Bitácora — César Del Pino"
+  description="Una indagación en curso sobre música, escucha y antropología sonora."
+  lang="es"
+>
+  <main class="bitacora-index">
+
+    <header class="bitacora-header">
+      <p class="eyebrow">── BITÁCORA ──</p>
+      <h1 class="bitacora-title">Una indagación en curso</h1>
+    </header>
+
+    <nav class="category-filters" aria-label="Filtrar por categoría">
+      <a href="/bitacora/" class="filter-chip is-active">Todos</a>
+      <a href="/bitacora/categoria/ensayos/" class="filter-chip">Ensayos</a>
+      <a href="/bitacora/categoria/notas-de-campo/" class="filter-chip">Notas de campo</a>
+      <a href="/bitacora/categoria/procesos/" class="filter-chip">Procesos</a>
+      <a href="/bitacora/categoria/glosario/" class="filter-chip">Glosario</a>
+    </nav>
+
+    <ol class="posts-list">
+      {sortedPosts.map(post => (
+        <li class="post-item">
+          <a href={`/bitacora/${post.id.replace(/\.mdx?$/, '')}/`} class="post-link">
+            <p class="post-eyebrow">
+              <span class="post-category">{categoryLabels[post.data.category]}</span>
+              <span class="separator">·</span>
+              <time datetime={post.data.publishDate.toISOString()}>
+                {formatDate(post.data.publishDate)}
+              </time>
+            </p>
+            <h2 class="post-title">{post.data.title}</h2>
+            <p class="post-lead">{post.data.lead}</p>
+            <p class="post-footer">
+              <span class="read-cta">Leer →</span>
+              {post.data.readingTime && (
+                <span class="reading-time">{post.data.readingTime} min</span>
+              )}
+            </p>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+  </main>
+</BaseLayout>
+
+<style>
+  .bitacora-index {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 8rem 2rem 6rem;
+  }
+
+  .bitacora-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-blood);
+    margin: 0 0 1.5rem;
+  }
+
+  .bitacora-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 80px);
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  .category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.75rem;
+    margin-bottom: 5rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .filter-chip {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .filter-chip:hover { color: var(--accent-blood); }
+
+  .filter-chip.is-active {
+    color: var(--accent-blood);
+    border-bottom-color: var(--accent-blood);
+  }
+
+  .posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-item { border-bottom: 1px solid var(--border-line); }
+  .post-item:first-child { border-top: 1px solid var(--border-line); }
+
+  .post-link {
+    display: block;
+    padding: 3rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: padding-left 0.4s ease;
+  }
+
+  .post-link:hover { padding-left: 1rem; }
+  .post-link:hover .post-title { color: var(--accent-blood); }
+
+  .post-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .post-category {
+    color: var(--accent-blood);
+    font-weight: 500;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 56px);
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.25rem;
+    transition: color 0.3s ease;
+    max-width: 28ch;
+    color: var(--text-primary);
+  }
+
+  .post-lead {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem;
+    max-width: 60ch;
+    font-variation-settings: "opsz" 36;
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .read-cta { color: var(--accent-blood); font-weight: 500; }
+  .reading-time { color: var(--text-muted); }
+
+  @media (max-width: 768px) {
+    .bitacora-index { padding: 5rem 1.25rem 4rem; }
+    .category-filters { gap: 0.5rem 1.25rem; margin-bottom: 3rem; }
+    .post-link { padding: 2rem 0; }
+    .post-link:hover { padding-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-link { transition: none; }
+  }
+</style>

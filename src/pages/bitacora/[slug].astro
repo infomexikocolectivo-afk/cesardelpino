@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('bitacora', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id.replace(/\.mdx?$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const categoryLabels: Record<string, string> = {
+  'ensayos': 'Ensayo',
+  'notas-de-campo': 'Nota de campo',
+  'procesos': 'Proceso',
+  'glosario': 'Glosario',
+};
+
+function formatDate(date: Date) {
+  const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+}
+---
+
+<BaseLayout
+  title={`${post.data.title} — Bitácora`}
+  description={post.data.lead}
+  lang="es"
+  type="article"
+>
+  <article class="bitacora-post">
+
+    <nav class="post-breadcrumb">
+      <a href="/bitacora/">← Volver a Bitácora</a>
+    </nav>
+
+    <header class="post-header">
+      <p class="post-eyebrow">
+        <a href={`/bitacora/categoria/${post.data.category}/`} class="post-category">
+          {categoryLabels[post.data.category]}
+        </a>
+        <span class="separator">·</span>
+        <time datetime={post.data.publishDate.toISOString()}>
+          {formatDate(post.data.publishDate)}
+        </time>
+        {post.data.readingTime && (
+          <>
+            <span class="separator">·</span>
+            <span>{post.data.readingTime} min de lectura</span>
+          </>
+        )}
+      </p>
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-lead">{post.data.lead}</p>
+    </header>
+
+    <div class="post-content">
+      <Content />
+    </div>
+
+  </article>
+</BaseLayout>
+
+<style>
+  .bitacora-post {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 6rem 2rem 6rem;
+  }
+
+  .post-breadcrumb {
+    margin-bottom: 4rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .post-breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .post-breadcrumb a:hover { color: var(--accent-blood); }
+
+  .post-header {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .post-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+  }
+
+  .post-category {
+    color: var(--accent-blood);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-style: italic;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .post-lead {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 1.6vw, 22px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0;
+    font-style: italic;
+    font-variation-settings: "opsz" 36;
+  }
+
+  .post-content {
+    font-family: var(--font-display);
+    font-size: clamp(17px, 1.3vw, 19px);
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-primary);
+    font-variation-settings: "opsz" 36;
+  }
+
+  .post-content :global(h1) { display: none; }
+
+  .post-content :global(h2) {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    margin: 3rem 0 1rem;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .post-content :global(h3) {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .post-content :global(p) { margin: 0 0 1.5rem; }
+
+  .post-content :global(blockquote) {
+    border-left: 2px solid var(--accent-blood);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.1em;
+    color: var(--text-muted);
+  }
+
+  .post-content :global(a) {
+    color: var(--accent-blood);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 768px) {
+    .bitacora-post { padding: 4rem 1.25rem 4rem; }
+    .post-header { margin-bottom: 3rem; padding-bottom: 2rem; }
+  }
+</style>
