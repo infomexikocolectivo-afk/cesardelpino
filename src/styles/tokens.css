@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Design Tokens — César Del Pino
+   Editar este archivo cambia el sistema visual entero.
+   ========================================================================== */
+
+:root {
+  /* Colores */
+  --bg-primary: #EDE8DD;
+  --bg-secondary: #E4DFD3;
+  --bg-deep: #1A1814;
+  --text-primary: #1A1814;
+  --text-on-deep: #EDE8DD;
+  --text-muted: #6B6357;
+  --text-subtle: #8B8378;
+  --accent-gold: #A8854A;
+  --accent-blood: #6E1F1A;
+  --accent-green: #2D3F2A;
+  --border-line: rgba(26, 24, 20, 0.18);
+  --border-strong: rgba(26, 24, 20, 0.4);
+
+  /* Fuentes */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --max-width: 1440px;
+  --content-width: 1200px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 144px;
+}

@@ -1,0 +1,166 @@
+---
+// Hero.astro - sección principal del home con manifiesto
+---
+
+<section class="hero">
+  <div class="hero-corners-top">
+    <div class="corner-label">
+      <span class="dot"></span>
+      Sonic Anthropologist
+    </div>
+    <div class="corner-label right">
+      An ongoing inquiry
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="hero-center">
+    <h1 class="hero-manifesto">
+      El sonido es la primera arquitectura.
+      <span class="line-2"><em>Construyo</em> espacios para que algo suceda dentro.</span>
+    </h1>
+
+    <div class="hero-meta">
+      <div class="hero-meta-label">Selected works<br />2014—2026</div>
+      <div class="hero-credentials">
+        Sound Artist &amp; Composer<span class="sep">·</span>Obra en Netflix<span class="sep">·</span>Museo Rambalkoshe (AM)
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-corners-bottom">
+    <div class="corner-label bottom-left">
+      <span class="dot"></span>
+      Antropología
+    </div>
+    <div class="corner-label bottom-right">
+      Sonido
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 120px 56px 56px;
+    position: relative;
+  }
+
+  .hero-corners-top, .hero-corners-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .hero-corners-top { padding-top: 24px; }
+
+  .corner-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .corner-label .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-blood);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .corner-label.right .dot { background: var(--accent-gold); }
+  .corner-label.bottom-left .dot { background: var(--accent-green); }
+  .corner-label.bottom-right .dot { background: var(--accent-blood); }
+
+  .hero-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 80px 0;
+    position: relative;
+  }
+
+  .hero-manifesto {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 8.2vw, 132px);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    margin-bottom: 64px;
+    max-width: 1200px;
+  }
+
+  .hero-manifesto .line-2 {
+    display: block;
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    margin-top: 0.05em;
+  }
+
+  .hero-manifesto .line-2 em {
+    color: var(--accent-blood);
+    font-style: italic;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 56px;
+    margin-top: 32px;
+    max-width: 900px;
+    border-top: 1px solid var(--border-line);
+    padding-top: 32px;
+  }
+
+  .hero-meta-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+    flex-shrink: 0;
+    padding-top: 4px;
+    width: 90px;
+  }
+
+  .hero-credentials {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+  }
+
+  .hero-credentials .sep {
+    color: var(--accent-gold);
+    margin: 0 8px;
+  }
+
+  @media (max-width: 700px) {
+    .hero { padding: 100px 24px 32px; }
+    .hero-corners-top, .hero-corners-bottom { gap: 16px; }
+    .corner-label { font-size: 10px; }
+  }
+</style>

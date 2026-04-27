@@ -1,0 +1,45 @@
+---
+// BaseLayout.astro - Layout base que envuelve TODAS las páginas
+import BaseHead from '../components/seo/BaseHead.astro';
+import Schema from '../components/seo/Schema.astro';
+import Analytics from '../components/seo/Analytics.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  lang?: 'es' | 'en';
+  schemaType?: 'Person' | 'Article' | 'Service' | 'WebSite';
+  schemaData?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  image,
+  type = 'website',
+  lang = 'es',
+  schemaType = 'Person',
+  schemaData,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang === 'es' ? 'es-MX' : 'en-US'}>
+  <head>
+    <BaseHead title={title} description={description} image={image} type={type} lang={lang} />
+    <Schema type={schemaType} data={schemaData} />
+    <Analytics />
+  </head>
+  <body>
+    <Header lang={lang} currentPath={Astro.url.pathname} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

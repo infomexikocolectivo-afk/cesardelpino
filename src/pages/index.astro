@@ -1,0 +1,1215 @@
+---
+// index.astro - Home page (Spanish default)
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'César Del Pino — Sonic Anthropologist · Sound Artist & Composer';
+const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist & Composer con obra en Netflix, TNT Russia, Cirque du Soleil, Museo Rambalkoshe y estudio Kanye West. En la intersección de antropología, composición e ingeniería sonora.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  lang="es"
+  schemaType="Person"
+>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-corners-top">
+    <div class="corner-label">
+      <span class="dot"></span>
+      Sonic Anthropologist
+    </div>
+    <div class="corner-label right">
+      An ongoing inquiry
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="hero-center">
+    <h1 class="hero-manifesto">
+      El sonido es la primera arquitectura.
+      <span class="line-2"><em>Construyo</em> espacios para que algo suceda dentro.</span>
+    </h1>
+
+    <div class="hero-meta">
+      <div class="hero-meta-label">Selected works<br />2014—2026</div>
+      <div class="hero-credentials">
+        Sound Artist &amp; Composer<span class="sep">·</span>Obra en Netflix<span class="sep">·</span>Museo Rambalkoshe (AM)
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-corners-bottom">
+    <div class="corner-label bottom-left">
+      <span class="dot"></span>
+      Antropología
+    </div>
+    <div class="corner-label bottom-right">
+      Sonido
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS / SELECTED WORKS -->
+<section class="section section-works" id="works">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number">
+        <span class="num">01</span> &nbsp;&nbsp; Obra seleccionada
+      </div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Una práctica que <em>cruza</em> mundos: cine, museo, broadcast e instituciones.</h2>
+        <p class="section-intro">
+          Doce años de obra en formatos donde el sonido construye sentido. Selección curada de proyectos verificables.
+        </p>
+      </div>
+    </div>
+
+    <div class="works-grid">
+
+      <!-- BLOCK 01 — SCORE -->
+      <article class="work-block">
+        <div class="work-cat"><span class="num">01</span> Score</div>
+        <h3 class="work-title">Composición para cine y broadcast</h3>
+        <ul class="work-list">
+          <li>
+            <div class="item-row">
+              <span class="item-name">Netflix</span>
+              <span class="item-year">2020—</span>
+            </div>
+            <span class="detail">Original score · sync deals</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">TNT Russia</span>
+              <span class="item-year">2021</span>
+            </div>
+            <span class="detail">НОВЫЕ ТАНЦЫ · Final con J. Kotseva</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Cirque du Soleil</span>
+              <span class="item-year">2022</span>
+            </div>
+            <span class="detail">Tracks · Guy Laliberté curation</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Las Hijas del Mezcal</span>
+              <span class="item-year">2024</span>
+            </div>
+            <span class="detail">Documental largometraje</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Muro</span>
+              <span class="item-year">2023</span>
+            </div>
+            <span class="detail">Dir. Jimena Huezca</span>
+          </li>
+        </ul>
+        <a href="/sobre/" class="work-cv-link">
+          Ver CV completo <span class="arrow">→</span>
+        </a>
+      </article>
+
+      <!-- BLOCK 02 — SOUND DESIGN -->
+      <article class="work-block">
+        <div class="work-cat"><span class="num">02</span> Sound Design</div>
+        <h3 class="work-title">Identidad sonora institucional &amp; de marca</h3>
+        <ul class="work-list">
+          <li>
+            <div class="item-row">
+              <span class="item-name">Senado de la República</span>
+              <span class="item-year">2024</span>
+            </div>
+            <span class="detail">Sound design oficial</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">INEGI</span>
+              <span class="item-year">2023</span>
+            </div>
+            <span class="detail">Identidad institucional</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">INE</span>
+              <span class="item-year">2018</span>
+            </div>
+            <span class="detail">Diseño sonoro de campaña</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Jägermeister</span>
+              <span class="item-year">2019</span>
+            </div>
+            <span class="detail">Historias Sonoras · ingeniería</span>
+          </li>
+        </ul>
+        <a href="/sobre/" class="work-cv-link">
+          Ver CV completo <span class="arrow">→</span>
+        </a>
+      </article>
+
+      <!-- BLOCK 03 — STUDIO & LIVE -->
+      <article class="work-block">
+        <div class="work-cat"><span class="num">03</span> Studio &amp; Live</div>
+        <h3 class="work-title">Diseño técnico, museo y performance</h3>
+        <ul class="work-list">
+          <li>
+            <div class="item-row">
+              <span class="item-name">Kanye West / Plaza de Toros</span>
+              <span class="item-year">2024</span>
+            </div>
+            <span class="detail">Studio design &amp; engineering · CDMX</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Museo Rambalkoshe</span>
+              <span class="item-year">2020</span>
+            </div>
+            <span class="detail">Live installation · Armenia</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">MAIA Contemporary</span>
+              <span class="item-year">2023</span>
+            </div>
+            <span class="detail">Galería arte contemporáneo · CDMX</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Galería Málaga</span>
+              <span class="item-year">2023</span>
+            </div>
+            <span class="detail">Performance galería · CDMX</span>
+          </li>
+          <li>
+            <div class="item-row">
+              <span class="item-name">Burning Man · Maxa Camp CDMX</span>
+              <span class="item-year">2022</span>
+            </div>
+            <span class="detail">Set ceremonial</span>
+          </li>
+        </ul>
+        <a href="/sobre/" class="work-cv-link">
+          Ver CV completo <span class="arrow">→</span>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO / SERVICES -->
+<section class="section section-studio" id="studio">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number"><span class="num">02</span> &nbsp;&nbsp; Estudio</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Cinco prácticas. Una <em>misma</em> escucha.</h2>
+        <p class="section-intro">
+          Cada práctica es un modo distinto de trabajar el sonido. Eligen una, o conversamos para encontrar la combinación que su proyecto pide.
+        </p>
+      </div>
+    </div>
+
+    <div class="studio-list">
+      <a href="/servicios/diseno-sonoro/" class="studio-item">
+        <div class="studio-num">01</div>
+        <div class="studio-name">Diseño <em>sonoro</em></div>
+        <div class="studio-desc">Identidad sonora para marcas, narrativas audiovisuales y experiencias inmersivas.</div>
+        <div class="studio-arrow">↗</div>
+      </a>
+
+      <a href="/servicios/produccion-musical/" class="studio-item">
+        <div class="studio-num">02</div>
+        <div class="studio-name">Producción <em>musical</em></div>
+        <div class="studio-desc">De la idea al máster. Acompañamiento integral en arreglo, grabación, programación.</div>
+        <div class="studio-arrow">↗</div>
+      </a>
+
+      <a href="/servicios/mix-mastering/" class="studio-item">
+        <div class="studio-num">03</div>
+        <div class="studio-name">Mix &amp; <em>Mastering</em></div>
+        <div class="studio-desc">Mezcla profesional y mastering analógico-híbrido. Listo para club, streaming, vinilo, cine.</div>
+        <div class="studio-arrow">↗</div>
+      </a>
+
+      <a href="/servicios/musica-original/" class="studio-item">
+        <div class="studio-num">04</div>
+        <div class="studio-name">Música <em>original</em></div>
+        <div class="studio-desc">Composición a medida para cine, publicidad, instalaciones, proyectos editoriales.</div>
+        <div class="studio-arrow">↗</div>
+      </a>
+
+      <a href="/servicios/ome-dj/" class="studio-item">
+        <div class="studio-num">05</div>
+        <div class="studio-name">Ōme <em>— DJ &amp; Live</em></div>
+        <div class="studio-desc">Sets ceremoniales para eventos curados, festivales y experiencias rituales.</div>
+        <div class="studio-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- OME SECTION -->
+<section class="section-ome" id="ome">
+  <div class="ome-corner-top">
+    <span class="dot"></span>
+    <span class="label">El proyecto musical</span>
+  </div>
+
+  <div class="ome-grid">
+    <div class="ome-circles">
+      <div class="ome-circle c1"></div>
+      <div class="ome-circle c2"></div>
+      <div class="ome-circle c3"></div>
+      <div class="ome-circle c4">
+        <div class="ome-symbol">Ō</div>
+      </div>
+    </div>
+
+    <div class="ome-text">
+      <div class="ome-eyebrow">— Ōme —</div>
+      <h2 class="ome-headline">
+        Un universo sonoro donde lo <em>ritual</em> encuentra el dancefloor.
+      </h2>
+      <p class="ome-description">
+        El proyecto musical de César Del Pino. Tracks, sets y experiencias en la frontera entre percusión tribal, house orgánico y melodías ancestrales. Sonido para cuerpos en movimiento y espíritus en escucha.
+      </p>
+
+      <div class="ome-stats">
+        <div>
+          <div class="ome-stat-num">1M+</div>
+          <div class="ome-stat-label">Plays<br />SoundCloud</div>
+        </div>
+        <div>
+          <div class="ome-stat-num">7</div>
+          <div class="ome-stat-label">Sellos<br />internacionales</div>
+        </div>
+        <div>
+          <div class="ome-stat-num">10K</div>
+          <div class="ome-stat-label">Oyentes mensuales<br />Spotify</div>
+        </div>
+      </div>
+
+      <a href="/ome/" class="ome-cta">
+        Entrar al universo Ōme <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RELEASES -->
+<section class="section-releases">
+  <div class="section-inner">
+    <div class="releases-header">
+      <div class="releases-eyebrow">— Selected releases · 2018—2023 —</div>
+      <h2 class="releases-title">Discografía internacional</h2>
+    </div>
+
+    <div class="releases-list">
+      <div class="release-row">
+        <div class="release-num">01</div>
+        <div class="release-name">Casa Caos</div>
+        <div class="release-country">BR</div>
+        <div class="release-year">2018</div>
+        <div class="release-arrow">↗</div>
+      </div>
+      <div class="release-row">
+        <div class="release-num">02</div>
+        <div class="release-name">LNDKHN</div>
+        <div class="release-country">IBZ</div>
+        <div class="release-year">2019</div>
+        <div class="release-arrow">↗</div>
+      </div>
+      <div class="release-row">
+        <div class="release-num">03</div>
+        <div class="release-name">Rambalkoshe</div>
+        <div class="release-country">AM</div>
+        <div class="release-year">2020</div>
+        <div class="release-arrow">↗</div>
+      </div>
+      <div class="release-row">
+        <div class="release-num">04</div>
+        <div class="release-name">Afterhour Sounds</div>
+        <div class="release-country">DE</div>
+        <div class="release-year">2022</div>
+        <div class="release-arrow">↗</div>
+      </div>
+      <div class="release-row">
+        <div class="release-num">05</div>
+        <div class="release-name">Supermatic Sounds</div>
+        <div class="release-country">UK</div>
+        <div class="release-year">2023</div>
+        <div class="release-arrow">↗</div>
+      </div>
+      <div class="release-row">
+        <div class="release-num">06</div>
+        <div class="release-name">TRNDMUSIK</div>
+        <div class="release-country">DE</div>
+        <div class="release-year">2023</div>
+        <div class="release-arrow">↗</div>
+      </div>
+      <div class="release-row">
+        <div class="release-num">07</div>
+        <div class="release-name">Levela</div>
+        <div class="release-country">RU</div>
+        <div class="release-year">2023</div>
+        <div class="release-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BITACORA -->
+<section class="section section-bitacora" id="bitacora">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-number"><span class="num">03</span> &nbsp;&nbsp; Bitácora sonora</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Notas, ensayos y <em>procesos</em> abiertos.</h2>
+        <p class="section-intro">
+          Escritos sobre lo que descubro en el estudio. Sistemas de producción, decisiones de mezcla, herramientas, fracasos útiles. Conversación abierta con la práctica.
+        </p>
+      </div>
+    </div>
+
+    <div class="bitacora-grid">
+      <a href="/bitacora/fenomenologia-musical/" class="post-card">
+        <div class="post-meta-row">
+          <span class="post-cat">Antropología</span>
+          <span class="post-date">15 · ABR · 2026</span>
+        </div>
+        <h3 class="post-title">Fenomenología musical: aprender a <em>escuchar</em> en la era del scroll</h3>
+        <p class="post-excerpt">Un ensayo sobre cómo el ruido moldea la atención, qué dice la neurociencia del placer sonoro, y por qué aprender a escuchar es un acto político.</p>
+        <div class="post-readmore">Leer <span class="arrow">→</span></div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-meta-row">
+          <span class="post-cat">Sistema</span>
+          <span class="post-date">02 · ABR · 2026</span>
+        </div>
+        <h3 class="post-title">Cómo construir un catálogo electrónico <em>mixable</em>: las siete capas Ōme</h3>
+        <p class="post-excerpt">Un protocolo para producir música con IA que funciona en sets DJ profesionales. Tempo lock, continuidad armónica, FX experimentales.</p>
+        <div class="post-readmore">Leer <span class="arrow">→</span></div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-meta-row">
+          <span class="post-cat">Diseño Sonoro</span>
+          <span class="post-date">20 · MAR · 2026</span>
+        </div>
+        <h3 class="post-title">Identidad sonora de marca: las <em>cinco</em> capas que la mayoría olvida.</h3>
+        <p class="post-excerpt">Más allá del logo sonoro: sistema completo de identidad auditiva, desde el isotipo hasta el ambient de espacio.</p>
+        <div class="post-readmore">Leer <span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="section-credentials">
+  <div class="credentials-inner">
+    <div class="credentials-label">— Formación &amp; tutela</div>
+    <div class="credentials-content">
+      <div class="cred-line">
+        <span class="label">Educación</span>
+        Antropología socio-cultural <em>—</em> UAM<br />
+        Composición <em>—</em> Escuela Superior de Música
+      </div>
+      <div class="cred-line">
+        <span class="label">Mentoría técnica</span>
+        Michael Brauer <em>·</em> Jaycen Joshua <em>·</em> Alex Mercado
+      </div>
+      <div class="cred-line">
+        <span class="label">Comunidad</span>
+        Mexiko Colectivo <em>—</em> plataforma curatorial
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 120px 56px 56px;
+  position: relative;
+}
+
+.hero-corners-top, .hero-corners-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  z-index: 2;
+}
+
+.hero-corners-top { padding-top: 24px; }
+
+.corner-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.corner-label .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-blood);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.corner-label.right .dot { background: var(--accent-gold); }
+.corner-label.bottom-left .dot { background: var(--accent-green); }
+.corner-label.bottom-right .dot { background: var(--accent-blood); }
+
+.hero-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 80px 0;
+  position: relative;
+}
+
+.hero-manifesto {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8.2vw, 132px);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  margin-bottom: 64px;
+  max-width: 1200px;
+}
+
+.hero-manifesto .line-2 {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  margin-top: 0.05em;
+}
+
+.hero-manifesto .line-2 em {
+  color: var(--accent-blood);
+  font-style: italic;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  margin-top: 32px;
+  max-width: 900px;
+  border-top: 1px solid var(--border-line);
+  padding-top: 32px;
+}
+
+.hero-meta-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+  padding-top: 4px;
+  width: 90px;
+}
+
+.hero-credentials {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+}
+
+.hero-credentials .sep {
+  color: var(--accent-gold);
+  margin: 0 8px;
+}
+
+/* SECTION GENERAL */
+.section { padding: 140px 56px; position: relative; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+
+.section-header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 64px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-top: 12px;
+}
+
+.section-number .num { color: var(--accent-blood); font-weight: 500; }
+
+.section-title-wrap { max-width: 800px; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  margin-bottom: 32px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--accent-gold);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.section-intro {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-primary);
+  max-width: 640px;
+  font-variation-settings: "opsz" 36;
+}
+
+/* WORKS */
+.section-works { border-top: 1px solid var(--border-line); }
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border-line);
+}
+
+.work-block {
+  padding: 48px 32px;
+  border-right: 1px solid var(--border-line);
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+  position: relative;
+}
+
+.work-block:last-child { border-right: none; }
+
+.work-cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.work-cat .num { color: var(--accent-blood); font-weight: 500; }
+
+.work-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+}
+
+.work-list { list-style: none; margin-bottom: 28px; }
+
+.work-list li {
+  font-size: 14px;
+  color: var(--text-primary);
+  padding: 12px 0;
+  border-top: 1px solid var(--border-line);
+  line-height: 1.5;
+}
+
+.work-list li:first-child { border-top: 1px solid var(--text-primary); }
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.item-name { font-weight: 500; letter-spacing: -0.005em; }
+
+.item-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--accent-blood);
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.detail {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.work-cv-link {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.work-cv-link:hover { color: var(--accent-blood); gap: 14px; }
+.work-cv-link .arrow { transition: transform 0.3s ease; }
+.work-cv-link:hover .arrow { transform: translateX(4px); }
+
+/* STUDIO */
+.section-studio {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-line);
+  border-bottom: 1px solid var(--border-line);
+}
+
+.studio-list { border-top: 1px solid var(--text-primary); }
+
+.studio-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 240px 80px;
+  gap: 40px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border-line);
+  align-items: baseline;
+  cursor: pointer;
+  transition: padding 0.3s ease;
+}
+
+.studio-item:hover { padding-left: 16px; }
+.studio-item:hover .studio-name { color: var(--accent-blood); }
+.studio-item:hover .studio-arrow {
+  transform: translateX(8px);
+  color: var(--accent-blood);
+}
+
+.studio-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.studio-name {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  transition: color 0.3s ease;
+}
+
+.studio-name em { font-style: italic; color: var(--accent-gold); }
+
+.studio-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 240px;
+}
+
+.studio-arrow {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-primary);
+  text-align: right;
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+/* OME */
+.section-ome {
+  background: var(--bg-deep);
+  color: var(--text-on-deep);
+  padding: 180px 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-ome::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(110, 31, 26, 0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ome-corner-top {
+  position: absolute;
+  top: 56px;
+  left: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ome-corner-top .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-blood);
+  border-radius: 50%;
+}
+
+.ome-corner-top .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-deep);
+}
+
+.ome-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+
+.ome-circles {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ome-circle {
+  position: absolute;
+  border: 1px solid rgba(237, 232, 221, 0.2);
+  border-radius: 50%;
+  transition: transform 0.6s ease;
+}
+
+.ome-circle.c1 { width: 100%; height: 100%; }
+.ome-circle.c2 { width: 75%; height: 75%; border-color: rgba(168, 133, 74, 0.3); }
+.ome-circle.c3 { width: 50%; height: 50%; border-color: rgba(110, 31, 26, 0.5); }
+.ome-circle.c4 {
+  width: 28%;
+  height: 28%;
+  background: var(--accent-blood);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ome-symbol {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--text-on-deep);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.ome-text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ome-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.ome-headline {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+
+.ome-headline em {
+  font-style: italic;
+  color: var(--accent-gold);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.ome-description {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(237, 232, 221, 0.78);
+  font-variation-settings: "opsz" 36;
+  max-width: 480px;
+}
+
+.ome-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(237, 232, 221, 0.15);
+}
+
+.ome-stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent-gold);
+  font-variation-settings: "opsz" 36;
+  margin-bottom: 8px;
+}
+
+.ome-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(237, 232, 221, 0.6);
+  line-height: 1.4;
+}
+
+.ome-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 28px;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 16px;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+.ome-cta:hover { background: var(--accent-gold); color: var(--bg-deep); }
+.ome-cta .arrow { transition: transform 0.3s ease; }
+.ome-cta:hover .arrow { transform: translateX(4px); }
+
+/* RELEASES */
+.section-releases {
+  background: var(--bg-secondary);
+  padding: 120px 56px;
+  border-top: 1px solid var(--border-line);
+  border-bottom: 1px solid var(--border-line);
+}
+
+.releases-header { text-align: center; margin-bottom: 64px; }
+
+.releases-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.releases-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+
+.releases-list { max-width: 900px; margin: 0 auto; }
+
+.release-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 80px 60px;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border-line);
+  align-items: baseline;
+  font-family: var(--font-display);
+  transition: padding 0.3s ease;
+}
+
+.release-row:first-child { border-top: 1px solid var(--text-primary); }
+.release-row:hover { padding-left: 12px; }
+.release-row:hover .release-name { color: var(--accent-blood); }
+
+.release-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+.release-name {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  transition: color 0.3s ease;
+}
+
+.release-country {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.release-year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent-blood);
+  font-weight: 500;
+  text-align: center;
+}
+
+.release-arrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* BITACORA */
+.section-bitacora { border-top: 1px solid var(--border-line); }
+
+.bitacora-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  border-top: 1px solid var(--text-primary);
+  padding-top: 24px;
+  transition: padding 0.3s ease;
+}
+
+.post-card:hover { padding-left: 12px; }
+.post-card:hover .post-title { color: var(--accent-blood); }
+
+.post-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.post-cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-blood);
+  font-weight: 500;
+}
+
+.post-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.post-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  transition: color 0.3s ease;
+}
+
+.post-title em { font-style: italic; color: var(--accent-gold); }
+
+.post-excerpt {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.post-readmore {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--border-line);
+  padding-top: 16px;
+}
+
+.post-readmore .arrow { transition: transform 0.3s ease; }
+.post-card:hover .post-readmore .arrow { transform: translateX(6px); }
+
+/* CREDENTIALS */
+.section-credentials {
+  padding: 100px 56px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-line);
+}
+
+.credentials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.credentials-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-top: 8px;
+}
+
+.credentials-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cred-line {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 36;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-line);
+}
+
+.cred-line:last-child { border-bottom: none; padding-bottom: 0; }
+
+.cred-line .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-blood);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.cred-line em { font-style: italic; color: var(--accent-gold); }
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .ome-grid { grid-template-columns: 1fr; gap: 56px; }
+  .ome-circles { max-width: 500px; margin: 0 auto; }
+  .credentials-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 980px) {
+  .works-grid { grid-template-columns: 1fr; }
+  .work-block { border-right: none; border-bottom: 1px solid var(--border-line); min-height: auto; }
+  .bitacora-grid { grid-template-columns: 1fr; gap: 32px; }
+  .studio-item { grid-template-columns: 60px 1fr 60px; }
+  .studio-desc { display: none; }
+}
+
+@media (max-width: 700px) {
+  .hero, .section, .section-ome, .section-releases, .section-credentials {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .hero { padding-top: 100px; padding-bottom: 32px; }
+  .hero-corners-top, .hero-corners-bottom { gap: 16px; }
+  .corner-label { font-size: 10px; }
+  .section-header { grid-template-columns: 1fr; gap: 24px; }
+  .release-row { grid-template-columns: 30px 1fr 50px 50px; gap: 12px; }
+  .release-arrow { display: none; }
+  .ome-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ome-symbol { font-size: 48px; }
+}
+</style>

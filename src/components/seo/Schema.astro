@@ -1,0 +1,71 @@
+---
+// Schema.astro - Schema.org JSON-LD para SEO estructurado
+export interface Props {
+  type?: 'Person' | 'Article' | 'Service' | 'WebSite';
+  data?: Record<string, any>;
+}
+
+const { type = 'Person', data = {} } = Astro.props;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'César Del Pino',
+  alternateName: ['Ōme', 'Sonic Anthropologist'],
+  jobTitle: 'Sound Artist & Composer',
+  description:
+    'Sonic Anthropologist. Compositor para Netflix, TNT Russia, Cirque du Soleil. Estudio de antropología, composición e ingeniería sonora.',
+  url: 'https://cesardelpino.com',
+  sameAs: [
+    'https://soundcloud.com/omemusicmx',
+    'https://instagram.com/omemusicmx',
+  ],
+  alumniOf: [
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Universidad Autónoma Metropolitana',
+      sameAs: 'https://www.uam.mx',
+    },
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Escuela Superior de Música',
+    },
+  ],
+  knowsAbout: [
+    'Sound Design',
+    'Music Composition',
+    'Mix and Mastering',
+    'Sonic Anthropology',
+    'Studio Engineering',
+    'Electronic Music Production',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Mexiko Colectivo',
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'César Del Pino',
+  url: 'https://cesardelpino.com',
+  description:
+    'Sound Artist & Composer · Sonic Anthropologist · Mexico City',
+  inLanguage: ['es-MX', 'en-US'],
+  author: {
+    '@type': 'Person',
+    name: 'César Del Pino',
+  },
+};
+
+let schema;
+if (type === 'Person') schema = personSchema;
+else if (type === 'WebSite') schema = websiteSchema;
+else schema = { ...data, '@context': 'https://schema.org', '@type': type };
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>

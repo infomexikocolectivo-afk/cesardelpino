@@ -1,0 +1,24 @@
+---
+// Analytics.astro - Google Analytics 4
+// Reemplaza GA_MEASUREMENT_ID por tu ID real (formato: G-XXXXXXXXXX)
+// Mientras esté vacío, no se carga nada (no se envía data en desarrollo)
+
+const GA_ID = 'GA_MEASUREMENT_ID'; // <-- aquí va tu ID cuando lo creés
+const isProduction = import.meta.env.PROD;
+const isEnabled = isProduction && GA_ID !== 'GA_MEASUREMENT_ID';
+---
+
+{isEnabled && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_ID, {
+        anonymize_ip: true,
+        cookie_flags: 'SameSite=None;Secure',
+      });
+    </script>
+  </>
+)}

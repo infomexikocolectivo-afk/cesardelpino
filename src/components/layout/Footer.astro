@@ -1,0 +1,184 @@
+---
+// Footer.astro - Pie de página presente en todas las páginas
+export interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+
+const labels = {
+  es: {
+    estudio: 'Estudio',
+    explorar: 'Explorar',
+    conectar: 'Conectar',
+    sobre: 'Sobre',
+    cursos: 'Cursos',
+    shop: 'Shop',
+    privacidad: 'Privacidad',
+    terminos: 'Términos',
+    cookies: 'Cookies',
+    tagline: '"El sonido es la primera arquitectura. Construyo espacios para que algo suceda dentro."',
+  },
+  en: {
+    estudio: 'Studio',
+    explorar: 'Explore',
+    conectar: 'Connect',
+    sobre: 'About',
+    cursos: 'Courses',
+    shop: 'Shop',
+    privacidad: 'Privacy',
+    terminos: 'Terms',
+    cookies: 'Cookies',
+    tagline: '"Sound is the first architecture. I build spaces for something to happen inside."',
+  },
+};
+const t = labels[lang];
+const langPrefix = lang === 'en' ? '/en' : '';
+---
+
+<footer class="site-footer" id="contacto">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">César <em>Del</em> Pino</div>
+        <p class="footer-tagline">{t.tagline}</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.estudio}</h4>
+        <ul>
+          <li><a href={`${langPrefix}/servicios/diseno-sonoro/`}>Diseño sonoro</a></li>
+          <li><a href={`${langPrefix}/servicios/produccion-musical/`}>Producción musical</a></li>
+          <li><a href={`${langPrefix}/servicios/mix-mastering/`}>Mix &amp; Mastering</a></li>
+          <li><a href={`${langPrefix}/servicios/musica-original/`}>Música original</a></li>
+          <li><a href={`${langPrefix}/servicios/ome-dj/`}>Ōme — DJ &amp; Live</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.explorar}</h4>
+        <ul>
+          <li><a href={`${langPrefix}/sobre/`}>{t.sobre}</a></li>
+          <li><a href={`${langPrefix}/ome/`}>Ōme</a></li>
+          <li><a href={`${langPrefix}/bitacora/`}>Bitácora</a></li>
+          <li><a href={`${langPrefix}/cursos/`}>{t.cursos}</a></li>
+          <li><a href={`${langPrefix}/shop/`}>{t.shop}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.conectar}</h4>
+        <ul>
+          <li><a href="mailto:hello@cesardelpino.com">hello@cesardelpino.com</a></li>
+          <li><a href="https://soundcloud.com/omemusicmx" rel="noopener">SoundCloud</a></li>
+          <li><a href="#" rel="noopener">Spotify</a></li>
+          <li><a href="https://instagram.com/omemusicmx" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">Bandcamp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 César Del Pino — Sonic Anthropologist</span>
+      <div class="footer-legal">
+        <a href={`${langPrefix}/legal/privacidad/`}>{t.privacidad}</a>
+        <a href={`${langPrefix}/legal/terminos/`}>{t.terminos}</a>
+        <a href={`${langPrefix}/legal/cookies/`}>{t.cookies}</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-deep);
+    color: var(--text-on-deep);
+    padding: 100px 56px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 80px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(237, 232, 221, 0.15);
+  }
+
+  .footer-brand { max-width: 360px; }
+
+  .footer-brand-mark {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+    color: var(--text-on-deep);
+    font-variation-settings: "opsz" 36;
+  }
+
+  .footer-brand-mark :global(em) {
+    font-style: italic;
+    color: var(--accent-gold);
+  }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(237, 232, 221, 0.7);
+    font-variation-settings: "opsz" 36, "SOFT" 100;
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+
+  .footer-col a {
+    font-size: 14px;
+    color: rgba(237, 232, 221, 0.75);
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover { color: var(--accent-gold); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(237, 232, 221, 0.5);
+  }
+
+  .footer-bottom a:hover { color: var(--accent-gold); }
+  .footer-legal { display: flex; gap: 32px; }
+
+  @media (max-width: 980px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .site-footer { padding: 80px 24px 32px; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>

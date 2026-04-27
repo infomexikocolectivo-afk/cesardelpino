@@ -1,0 +1,19 @@
+{
+  "name": "cesardelpino-web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sitio web de Cesar Del Pino - Sonic Anthropologist",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.2",
+    "@astrojs/rss": "^4.0.12",
+    "astro": "^5.16.7"
+  }
+}
