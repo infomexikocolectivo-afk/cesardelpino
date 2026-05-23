@@ -265,10 +265,10 @@
 
   /* CRÉDITOS — debajo del cover, centrados */
   .creditos{position:fixed;left:50%;
-    top:calc(38% + clamp(140px,21vmin,220px));
+    top:calc(38% + clamp(115px,18vmin,180px));
     transform:translateX(-50%);
     text-align:center;width:90vw;max-width:560px;
-    display:flex;flex-direction:column;gap:.1em;}
+    display:flex;flex-direction:column;gap:.05em;}
   .cr-row{font-family:var(--sans);font-size:clamp(10px,1vw,11.5px);
     letter-spacing:.32em;text-transform:uppercase;
     color:rgba(240,232,220,.85);
@@ -278,14 +278,15 @@
 
   /* hint flotante */
   .pista-nota{position:fixed;left:50%;
-    bottom:calc(4vw + 70px);
+    top:calc(38% - clamp(220px,32vmin,340px));
     transform:translateX(-50%);
     font-family:var(--serif);font-style:italic;
-    font-size:clamp(12px,1.6vw,14px);
-    letter-spacing:.04em;color:rgba(200,196,190,.5);
+    font-size:clamp(11px,1.3vw,13px);
+    letter-spacing:.18em;color:rgba(200,196,190,.55);
     text-align:center;opacity:0;
     transition:opacity 1.6s ease;pointer-events:none;
-    font-weight:400;max-width:80vw;}
+    font-weight:400;max-width:80vw;
+    text-transform:uppercase;}
   .pista-nota.aparece{opacity:1;}
 
   /* REDES — 2 columnas centradas abajo */
@@ -327,12 +328,12 @@
     .titulo-arriba .t1{font-size:clamp(28px,7vw,42px);}
     .titulo-arriba .ome{font-size:10px;letter-spacing:.45em;margin-top:.8em;}
     .marca-hud{display:none;}
-    .creditos{top:calc(38% + clamp(125px,28vmin,180px));}
+    .creditos{top:calc(38% + clamp(105px,24vmin,150px));}
     .cr-row{font-size:9px;letter-spacing:.22em;line-height:2;}
     .redes{grid-template-columns:1fr;gap:.5em;
       width:min(360px,80vw);bottom:5vw;}
     .red{font-size:10px;padding:1em 1.4em;}
-    .pista-nota{bottom:calc(5vw + 180px);font-size:12px;}
+    .pista-nota{top:calc(38% - clamp(190px,40vmin,240px));font-size:10px;letter-spacing:.14em;}
   }
 
   @supports (padding: env(safe-area-inset-top)){
@@ -796,8 +797,8 @@ function entrar(){
   setTimeout(()=>{
     document.getElementById('pista-nota').classList.add('aparece');
     setTimeout(()=>{
-      document.getElementById('pista-nota').classList.remove('aparece');
-    }, 5500);
+      document.getElementById('pista-nota').style.opacity = '.35';
+    }, 8000);
   }, 2000);
 }
 
