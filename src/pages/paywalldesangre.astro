@@ -196,7 +196,7 @@
      ============================================ */
   #altar{position:fixed;z-index:5;left:50%;top:50%;
     transform:translate(-50%,-50%);
-    width:clamp(220px,42vmin,460px);
+    width:clamp(200px,36vmin,400px);
     aspect-ratio:1/1;
     opacity:0;transition:opacity 2s ease;
     pointer-events:none;will-change:transform,filter;}
@@ -227,7 +227,7 @@
 
   /* TÍTULO arriba del cover, centrado */
   .titulo-arriba{position:fixed;left:50%;
-    top:calc(50% - clamp(160px,23vmin,260px));
+    top:calc(50% - clamp(200px,28vmin,310px));
     transform:translateX(-50%);
     text-align:center;width:90vw;}
   .titulo-arriba .t1{display:block;
@@ -239,20 +239,20 @@
   .titulo-arriba .t1 em{font-style:italic;color:var(--sangre);
     font-weight:400;animation:pulse-sangre 3.2s ease-in-out infinite;}
   .titulo-arriba .ome{display:block;
-    font-family:var(--sans);font-size:11px;
+    font-family:var(--sans);font-size:clamp(13px,1.4vw,16px);
     letter-spacing:.55em;text-transform:uppercase;
-    color:var(--tinta);margin-top:1.2em;font-weight:400;
+    color:var(--hueso);margin-top:1.2em;font-weight:600;
     padding-left:.55em;}
 
   /* Ōme top-left */
   .marca-hud{position:absolute;top:4vw;left:4vw;
     font-family:var(--sans);font-size:11px;
     letter-spacing:.55em;text-transform:uppercase;
-    color:var(--tinta);font-weight:400;padding-left:.55em;}
+    color:var(--hueso);font-weight:600;padding-left:.55em;letter-spacing:.6em;}
 
   /* Vol */
   .vol{position:absolute;top:4vw;right:4vw;pointer-events:auto;
-    display:flex;align-items:center;gap:.7em;}
+    display:none;align-items:center;gap:.7em;}
   .vol input{-webkit-appearance:none;appearance:none;
     width:80px;height:1px;
     background:var(--vino);outline:none;}
@@ -267,14 +267,14 @@
 
   /* CRÉDITOS — debajo del cover, centrados */
   .creditos{position:fixed;left:50%;
-    top:calc(50% + clamp(140px,21vmin,235px));
+    top:calc(50% + clamp(150px,22vmin,250px));
     transform:translateX(-50%);
-    text-align:center;width:90vw;max-width:520px;}
-  .cr-row{font-family:var(--sans);font-size:10px;
+    text-align:center;width:90vw;max-width:520px;display:flex;flex-direction:column;gap:.15em;}
+  .cr-row{font-family:var(--sans);font-size:clamp(10px,1.1vw,12px);
     letter-spacing:.32em;text-transform:uppercase;
-    color:rgba(138,132,124,.75);
-    line-height:2.1;font-weight:400;padding-left:.32em;}
-  .cr-row strong{color:rgba(240,232,220,.65);font-weight:500;}
+    color:rgba(240,232,220,.85);
+    line-height:1.9;font-weight:400;letter-spacing:.18em;}
+  .cr-row strong{color:rgba(168,18,26,.85);font-weight:500;letter-spacing:.22em;}
   .cr-row .val{color:var(--hueso);font-weight:400;}
 
   /* hint flotante */
@@ -324,13 +324,11 @@
   @media (max-width:700px){
     .marca{font-size:10px;letter-spacing:.5em;}
     .invitacion{font-size:14px;}
-    .titulo-arriba{top:calc(50% - clamp(140px,32vmin,200px));}
+    .titulo-arriba{top:calc(50% - clamp(170px,36vmin,230px));}
     .titulo-arriba .t1{font-size:clamp(28px,7vw,42px);}
     .titulo-arriba .ome{font-size:10px;letter-spacing:.45em;margin-top:.8em;}
     .marca-hud{display:none;}
-    .vol{top:auto;bottom:calc(4vw + 130px);
-      right:50%;transform:translateX(50%);}
-    .creditos{top:calc(50% + clamp(125px,30vmin,190px));}
+    .creditos{top:calc(50% + clamp(130px,32vmin,200px));}
     .cr-row{font-size:9px;letter-spacing:.22em;line-height:2;}
     .redes{grid-template-columns:1fr;gap:.5em;
       width:min(360px,80vw);bottom:5vw;}
@@ -370,7 +368,10 @@
 
   <div class="creditos">
     <div class="cr-row"><strong>Track</strong> · <span class="val">Paywall de Sangre</span></div>
-    <div class="cr-row"><strong>Composed &amp; produced by</strong> · <span class="val">César Del Pino</span></div>
+    <div class="cr-row"><strong>Composed &amp; produced by</strong> · <span class="val">César Del Pino (2026)</span></div>
+    <div class="cr-row"><strong>Female vocals</strong> · <span class="val">Fernanda Viera, Robert T.</span></div>
+    <div class="cr-row"><strong>Percussion</strong> · <span class="val">José Ramírez</span></div>
+    <div class="cr-row"><strong>Mix &amp; mastering</strong> · <span class="val">Acupuncture Studio</span></div>
     <div class="cr-row"><strong>Project</strong> · <span class="val">Ōme</span></div>
   </div>
 
@@ -405,8 +406,8 @@
     <div class="subtitulo">an interactive sonic ritual</div>
 
     <p class="invitacion">
-      Welcome to the sonic experience of my latest release.
-      <strong>Tap the screen</strong> — two bongos rest in your hands.
+      Welcome to the sonic experience of my latest release.<br>
+      <strong>Tap the screen</strong> — two bongos rest in your hands.<br>
       <span class="toca">Play with me</span>, weave your rhythm into mine.
     </p>
 
