@@ -70,10 +70,10 @@
     padding:8vw 6vw;text-align:center;}
 
   /* marca arriba */
-  .marca{position:absolute;top:5vh;left:50%;transform:translateX(-50%);
-    font-family:var(--sans);font-size:11px;letter-spacing:.7em;
-    text-transform:uppercase;color:var(--tinta);font-weight:400;
-    padding-left:.7em;
+  .marca{position:relative;text-align:center;
+    font-family:var(--sans);font-size:13px;letter-spacing:.7em;
+    text-transform:uppercase;color:var(--hueso);font-weight:600;
+    padding-left:.7em;margin-bottom:1.8em;
     opacity:0;animation:fade-in 1.2s .3s ease forwards;}
 
   /* "presents" */
@@ -116,8 +116,8 @@
 
   /* invitación a tocar */
   .invitacion{font-family:var(--serif);font-style:italic;
-    font-size:clamp(15px,2.1vw,18px);
-    line-height:1.6;color:rgba(240,232,220,.78);
+    font-size:clamp(17px,2.4vw,22px);
+    line-height:1.7;color:rgba(240,232,220,.78);
     margin-top:2.6em;max-width:520px;font-weight:300;
     letter-spacing:.005em;
     opacity:0;animation:fade-in 1.4s 2s ease forwards;}
@@ -178,13 +178,12 @@
     font-family:var(--sans);font-size:9px;
     letter-spacing:.4em;text-transform:uppercase;
     color:var(--tinta);line-height:2;font-weight:400;
-    padding-left:.4em;text-align:center;
+    text-align:center;display:flex;flex-direction:column;align-items:center;gap:.3em;
     opacity:0;animation:fade-in 1.4s 2.8s ease forwards;}
   .pie .firma{display:block;margin-top:.2em;
     font-family:var(--serif);font-style:italic;
     font-size:12px;letter-spacing:.06em;
-    color:rgba(168,18,26,.75);text-transform:none;
-    padding-left:0;}
+    color:rgba(168,18,26,.75);text-transform:none;}
 
   @keyframes fade-in{
     from{opacity:0;transform:translateY(8px);}
@@ -323,7 +322,7 @@
   /* RESPONSIVE */
   @media (max-width:700px){
     .marca{font-size:10px;letter-spacing:.5em;}
-    .invitacion{font-size:14px;}
+    .invitacion{font-size:16px;}
     .titulo-arriba{top:calc(50% - clamp(170px,36vmin,230px));}
     .titulo-arriba .t1{font-size:clamp(28px,7vw,42px);}
     .titulo-arriba .ome{font-size:10px;letter-spacing:.45em;margin-top:.8em;}
