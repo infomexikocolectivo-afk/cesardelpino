@@ -680,10 +680,14 @@ function manchar(e){
 }
 
 addEventListener('mousemove', mover);
-addEventListener('mousedown', e=>{manchar(e); mover(e);});
+addEventListener('mousedown', e=>{
+  if(e.target && e.target.closest('a, button, .vol, .red, .redes')) return;
+  manchar(e); mover(e);
+});
 addEventListener('touchmove', mover, {passive:false});
 addEventListener('touchstart', e=>{
   if(!experienciaActiva) return;
+  if(e.target && e.target.closest('a, button, .vol, .red, .redes')) return;
   manchar(e); mover(e);
 }, {passive:false});
 
