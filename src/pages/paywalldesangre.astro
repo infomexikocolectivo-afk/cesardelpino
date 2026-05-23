@@ -1,7 +1,7 @@
 ---
 // src/pages/paywalldesangre.astro
-// Experiencia interactiva audio-reactiva para el track "Paywall de Sangre" de Ōme
-// Standalone — no usa Header/Footer del sitio
+// Paywall de Sangre — experiencia interactiva v2
+// Cover al centro, humo rojo vino reactivo al audio y al mouse/dedo
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -15,10 +15,10 @@
 <meta property="og:image" content="/audio/paywalldesangre-cover.png">
 <style>
   :root{
-    --vacio:#08060a;
-    --obsidiana:#14101a;
-    --sangre-vieja:#3d0a0a;
-    --sangre-fresca:#a8121a;
+    --vacio:#06040a;
+    --vino:#5a0e1c;
+    --vino-claro:#8a1a2a;
+    --sangre:#a8121a;
     --plata:#c8c4be;
     --hueso:#e8e0d4;
     --tinta:#6a6660;
@@ -30,77 +30,106 @@
   canvas{display:block;position:fixed;inset:0;}
 
   /* ---- pantalla de entrada ---- */
-  #portada{position:fixed;inset:0;z-index:20;display:flex;
+  #portada{position:fixed;inset:0;z-index:30;display:flex;
     flex-direction:column;align-items:center;justify-content:center;
-    background:radial-gradient(ellipse at 50% 55%, #1a0a12 0%, #08060a 75%);
-    transition:opacity 1.4s ease;text-align:center;padding:8vw;}
+    background:radial-gradient(ellipse at 50% 55%, #1a0a12 0%, #06040a 75%);
+    transition:opacity 1.6s ease;text-align:center;padding:8vw;}
   #portada.fuera{opacity:0;pointer-events:none;}
   .artista{font-size:clamp(11px,1.8vw,14px);letter-spacing:.6em;
     text-transform:uppercase;color:var(--tinta);margin-bottom:2.4rem;
     padding-left:.6em;}
   .titulo{font-size:clamp(40px,9vw,112px);line-height:.95;
     color:var(--hueso);font-weight:400;letter-spacing:-.015em;
-    text-shadow:0 0 80px rgba(168,18,26,.3);}
-  .titulo em{font-style:italic;color:var(--sangre-fresca);}
+    text-shadow:0 0 100px rgba(168,18,26,.35);}
+  .titulo em{font-style:italic;color:var(--sangre);}
   .iniciar{margin-top:3.4rem;background:none;cursor:pointer;
-    border:1px solid var(--sangre-vieja);color:var(--hueso);
+    border:1px solid var(--vino);color:var(--hueso);
     font-family:inherit;font-size:clamp(11px,2vw,13px);
     letter-spacing:.28em;text-transform:uppercase;padding:1.2em 2.6em;
     border-radius:999px;transition:all .5s ease;}
-  .iniciar:hover{background:var(--sangre-vieja);color:var(--hueso);
-    border-color:var(--sangre-fresca);
-    box-shadow:0 0 60px rgba(168,18,26,.4);}
+  .iniciar:hover{background:var(--vino);color:var(--hueso);
+    border-color:var(--sangre);
+    box-shadow:0 0 60px rgba(168,18,26,.45);}
   .pie{margin-top:2.6rem;font-size:10px;color:var(--tinta);
     letter-spacing:.16em;text-transform:uppercase;}
 
-  /* ---- HUD durante la experiencia ---- */
-  #hud{position:fixed;z-index:15;inset:0;pointer-events:none;
-    opacity:0;transition:opacity 1.6s ease;}
+  /* ---- COVER AL CENTRO ---- */
+  #altar{position:fixed;z-index:5;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    width:clamp(220px,38vmin,440px);
+    aspect-ratio:1/1;
+    opacity:0;transition:opacity 2s ease;
+    pointer-events:none;
+    will-change:transform,filter;}
+  #altar.dentro{opacity:1;}
+  #altar img{width:100%;height:100%;object-fit:cover;
+    display:block;
+    border-radius:2px;
+    box-shadow:
+      0 0 80px rgba(168,18,26,.35),
+      0 0 160px rgba(90,14,28,.25),
+      0 0 0 1px rgba(168,18,26,.15);
+    filter:contrast(1.05) saturate(0.9);}
+  /* halo detrás del cover */
+  #halo{position:fixed;z-index:4;left:50%;top:50%;
+    transform:translate(-50%,-50%);
+    width:clamp(280px,50vmin,580px);
+    aspect-ratio:1/1;
+    opacity:0;transition:opacity 2s ease;
+    pointer-events:none;
+    background:radial-gradient(circle, rgba(168,18,26,.18) 0%, rgba(90,14,28,.08) 40%, transparent 70%);
+    filter:blur(20px);
+    will-change:transform,opacity;}
+  #halo.dentro{opacity:1;}
+
+  /* ---- HUD ---- */
+  #hud{position:fixed;z-index:20;inset:0;pointer-events:none;
+    opacity:0;transition:opacity 1.8s ease;}
   #hud.dentro{opacity:1;}
   .esquina{position:absolute;font-size:11px;letter-spacing:.22em;
     text-transform:uppercase;color:var(--tinta);}
   .arr-izq{top:4vw;left:4vw;}
-  .arr-der{top:4vw;right:4vw;text-align:right;}
-  .titulo-hud{color:var(--hueso);font-size:13px;letter-spacing:.18em;}
-  .artista-hud{color:var(--sangre-fresca);font-style:italic;font-size:11px;
-    text-transform:none;letter-spacing:.05em;margin-top:.3em;}
+  .titulo-hud{color:var(--hueso);font-size:13px;letter-spacing:.22em;
+    opacity:.85;}
+  .artista-hud{color:var(--sangre);font-style:italic;font-size:11px;
+    text-transform:none;letter-spacing:.05em;margin-top:.3em;opacity:.9;}
 
-  /* botones de redes abajo */
   .redes{position:absolute;bottom:4vw;left:50%;transform:translateX(-50%);
     display:flex;gap:1.2em;pointer-events:auto;flex-wrap:wrap;
     justify-content:center;}
   .red{font-family:inherit;font-size:11px;letter-spacing:.22em;
     text-transform:uppercase;color:var(--hueso);text-decoration:none;
-    border:1px solid var(--sangre-vieja);padding:.9em 1.6em;
-    border-radius:999px;transition:all .4s ease;background:rgba(8,6,10,.6);
-    backdrop-filter:blur(4px);}
-  .red:hover{background:var(--sangre-vieja);border-color:var(--sangre-fresca);
-    box-shadow:0 0 30px rgba(168,18,26,.3);}
-  .red em{font-style:italic;color:var(--sangre-fresca);
+    border:1px solid rgba(90,14,28,.55);padding:.9em 1.6em;
+    border-radius:999px;transition:all .4s ease;
+    background:rgba(6,4,10,.45);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);}
+  .red:hover{background:rgba(90,14,28,.7);border-color:var(--sangre);
+    box-shadow:0 0 40px rgba(168,18,26,.35);}
+  .red em{font-style:italic;color:var(--sangre);
     text-transform:none;letter-spacing:.04em;margin-left:.4em;}
 
-  /* control de volumen */
   .vol{position:absolute;top:4vw;right:4vw;pointer-events:auto;
     display:flex;align-items:center;gap:.8em;}
   .vol input{-webkit-appearance:none;appearance:none;width:90px;height:1px;
-    background:var(--sangre-vieja);outline:none;}
+    background:var(--vino);outline:none;}
   .vol input::-webkit-slider-thumb{-webkit-appearance:none;width:11px;
-    height:11px;border-radius:50%;background:var(--sangre-fresca);cursor:pointer;}
+    height:11px;border-radius:50%;background:var(--sangre);cursor:pointer;}
   .vol input::-moz-range-thumb{width:11px;height:11px;border:none;
-    border-radius:50%;background:var(--sangre-fresca);cursor:pointer;}
+    border-radius:50%;background:var(--sangre);cursor:pointer;}
   .vol span{font-size:9px;letter-spacing:.22em;color:var(--tinta);}
 
-  .pista-nota{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    font-size:10px;letter-spacing:.18em;color:rgba(200,196,190,.25);
+  .pista-nota{position:absolute;left:50%;bottom:14vw;transform:translateX(-50%);
+    font-size:10px;letter-spacing:.22em;color:rgba(200,196,190,.4);
     text-align:center;text-transform:uppercase;opacity:0;
-    transition:opacity 1.2s ease;pointer-events:none;}
+    transition:opacity 1.6s ease;pointer-events:none;font-style:italic;}
   .pista-nota.aparece{opacity:1;}
 
   @media (max-width:640px){
-    .arr-der{display:none;}
-    .vol{top:auto;bottom:14vw;right:50%;transform:translateX(50%);}
+    .vol{top:auto;bottom:18vw;right:50%;transform:translateX(50%);}
     .redes{bottom:6vw;gap:.6em;}
     .red{font-size:10px;padding:.8em 1.2em;}
+    .pista-nota{bottom:24vw;}
   }
 </style>
 </head>
@@ -108,7 +137,18 @@
 
 <canvas id="lienzo"></canvas>
 
-<!-- HUD durante la experiencia -->
+<!-- Halo detrás del cover -->
+<div id="halo"></div>
+
+<!-- COVER al centro (altar) -->
+<div id="altar">
+  <img src="/audio/paywalldesangre-cover.png" alt="Paywall de Sangre" draggable="false">
+</div>
+
+<!-- Canvas de humo encima del cover -->
+<canvas id="humo-arriba"></canvas>
+
+<!-- HUD -->
 <div id="hud">
   <div class="esquina arr-izq">
     <div class="titulo-hud">Paywall de Sangre</div>
@@ -118,7 +158,7 @@
     <span>VOL</span>
     <input type="range" id="vol" min="0" max="1" step="0.01" value="0.85">
   </div>
-  <div class="pista-nota" id="pista-nota">mueve · toca · sangra</div>
+  <div class="pista-nota" id="pista-nota">arrastra el humo · toca para sangrar</div>
   <div class="redes">
     <a class="red" href="https://soundcloud.com/omemusic/paywall-sangre" target="_blank" rel="noopener">
       Escucha en <em>SoundCloud</em>
@@ -141,16 +181,21 @@
   <source src="/audio/paywalldesangre.mp3" type="audio/mpeg">
 </audio>
 
+<style>
+  #humo-arriba{position:fixed;inset:0;z-index:10;pointer-events:none;
+    mix-blend-mode:screen;}
+</style>
+
 <script>
 /* ============================================================
-   PAYWALL DE SANGRE — experiencia interactiva
-   Estructura: rejilla rectangular ("el paywall") que late
-   con los graves del track. El mouse/toque hace que las
-   intersecciones cercanas SANGREN (gotean hacia abajo).
-   Cada click deja una mancha permanente.
+   PAYWALL DE SANGRE v2 — Humo rojo vino reactivo
+   - Cover al centro como altar
+   - Humo nebuloso debajo (z-index 1) y encima del cover (z-index 10)
+   - El mouse/dedo arrastra el humo como líquido viscoso
+   - Pulsa con kick, respira con graves
    ============================================================ */
 
-/* ---------- 1. AUDIO Y FFT ---------- */
+/* ---------- AUDIO ---------- */
 let ctx, analizador, datos, fuente, ganancia;
 const audioEl = document.getElementById('audio');
 
@@ -165,7 +210,7 @@ function arrancarAudio(){
   fuente.connect(ganancia);
   ganancia.connect(analizador);
   analizador.connect(ctx.destination);
-  audioEl.play().catch(e=>console.warn('audio play:',e));
+  audioEl.play().catch(e=>console.warn('audio:',e));
 }
 
 function leerAudio(){
@@ -174,57 +219,60 @@ function leerAudio(){
   let g=0,m=0,a=0,k=0;
   const n=datos.length;
   const c1=Math.floor(n*.08), c2=Math.floor(n*.35);
-  // kick: solo los primeros 4 bins (sub-bass / kick fundamental)
   for(let i=0;i<4;i++) k=Math.max(k,datos[i]);
   for(let i=0;i<c1;i++) g+=datos[i];
   for(let i=c1;i<c2;i++) m+=datos[i];
   for(let i=c2;i<n;i++) a+=datos[i];
-  return {
-    grave:g/(c1*255),
-    medio:m/((c2-c1)*255),
-    agudo:a/((n-c2)*255),
-    kick:k/255
-  };
+  return {grave:g/(c1*255), medio:m/((c2-c1)*255),
+    agudo:a/((n-c2)*255), kick:k/255};
 }
 
-/* ---------- 2. CANVAS Y LA REJILLA ---------- */
+/* ---------- CANVAS (humo de fondo) ---------- */
 const lienzo = document.getElementById('lienzo');
 const cx = lienzo.getContext('2d');
+const humoArriba = document.getElementById('humo-arriba');
+const cxArriba = humoArriba.getContext('2d');
 let W,H,DPR;
+
 function medir(){
   DPR = Math.min(devicePixelRatio||1, 2);
-  W = lienzo.width = innerWidth*DPR;
-  H = lienzo.height = innerHeight*DPR;
-  lienzo.style.width = innerWidth+'px';
-  lienzo.style.height = innerHeight+'px';
+  W = lienzo.width = humoArriba.width = innerWidth*DPR;
+  H = lienzo.height = humoArriba.height = innerHeight*DPR;
+  lienzo.style.width = humoArriba.style.width = innerWidth+'px';
+  lienzo.style.height = humoArriba.style.height = innerHeight+'px';
 }
 addEventListener('resize', medir); medir();
 
-/* La rejilla — el paywall literal */
-const COLS = 22;
-const FILAS = 14;
-let nodos = [];           // intersecciones de la rejilla
-let gotas = [];           // gotas que caen desde las intersecciones tocadas
-let manchas = [];         // manchas permanentes de clicks/taps
-let raton = {x:-1,y:-1,activo:false,vx:0,vy:0,px:0,py:0};
+/* ---------- PARTÍCULAS DE HUMO ---------- */
+const PARTICULAS_FONDO = 90;
+const PARTICULAS_FRENTE = 35;
+let particulasFondo = [];
+let particulasFrente = [];
+let manchas = [];
+let raton = {x:W/2, y:H/2, activo:false, vx:0, vy:0, px:W/2, py:H/2};
 let suaveG=0, suaveM=0, suaveA=0, suaveK=0, pulso=0, pulsoUlt=0;
 
-function construirNodos(){
-  nodos = [];
-  for(let f=0;f<=FILAS;f++){
-    for(let c=0;c<=COLS;c++){
-      nodos.push({
-        cx:c/COLS,        // posición relativa 0..1
-        cy:f/FILAS,
-        ofX:0, ofY:0,     // offset por interacción
-        sangre:0          // cantidad de sangre acumulada en este nodo
-      });
-    }
-  }
+function nuevaParticula(esFrente=false){
+  const ang = Math.random()*Math.PI*2;
+  const rad = Math.random()*Math.min(W,H)*0.5 + Math.min(W,H)*0.1;
+  return {
+    x: W/2 + Math.cos(ang)*rad,
+    y: H/2 + Math.sin(ang)*rad,
+    vx:(Math.random()-0.5)*0.6,
+    vy:(Math.random()-0.5)*0.6 - 0.2,
+    r: esFrente ? (40+Math.random()*60)*DPR : (60+Math.random()*120)*DPR,
+    vida: Math.random(),
+    vidaMax: 0.8+Math.random()*0.6,
+    tono: 350+Math.random()*15,           // rojo vino
+    sat: 55+Math.random()*25,
+    lum: 12+Math.random()*15,
+    esFrente
+  };
 }
-construirNodos();
+for(let i=0;i<PARTICULAS_FONDO;i++) particulasFondo.push(nuevaParticula(false));
+for(let i=0;i<PARTICULAS_FRENTE;i++) particulasFrente.push(nuevaParticula(true));
 
-/* ---------- 3. INTERACCIÓN ---------- */
+/* ---------- INTERACCIÓN ---------- */
 function pos(e){
   const t = e.touches ? e.touches[0] : e;
   return {x:t.clientX*DPR, y:t.clientY*DPR};
@@ -235,191 +283,183 @@ function mover(e){
   raton.px = p.x; raton.py = p.y;
   raton.x = p.x; raton.y = p.y; raton.activo = true;
 
-  // los nodos cercanos sangran
-  const radio = Math.min(W,H)*0.12;
-  for(const n of nodos){
-    const nx = n.cx*W, ny = n.cy*H;
-    const d = Math.hypot(nx-p.x, ny-p.y);
-    if(d < radio){
-      const fuerza = (1 - d/radio);
-      n.sangre = Math.min(1, n.sangre + fuerza*0.06);
-      // empuja el nodo levemente
-      const ang = Math.atan2(ny-p.y, nx-p.x);
-      n.ofX += Math.cos(ang)*fuerza*2;
-      n.ofY += Math.sin(ang)*fuerza*2;
-      // probabilidad de gotear
-      if(Math.random() < fuerza*0.15){
-        gotas.push({
-          x:nx + n.ofX, y:ny + n.ofY,
-          vy:0.5+Math.random()*1.2,
-          vida:1, ancho:1+Math.random()*1.2
-        });
+  // arrastra el humo cercano como líquido viscoso
+  const radio = Math.min(W,H)*0.18;
+  const fuerzaMax = 0.18;
+  const procesar = (arr)=>{
+    for(const par of arr){
+      const dx = par.x-p.x, dy = par.y-p.y;
+      const d = Math.hypot(dx,dy);
+      if(d < radio){
+        const f = (1 - d/radio) * fuerzaMax;
+        par.vx += raton.vx * f * 0.08;
+        par.vy += raton.vy * f * 0.08;
+        // empuje radial leve hacia afuera
+        const ang = Math.atan2(dy,dx);
+        par.vx += Math.cos(ang)*f*0.4;
+        par.vy += Math.sin(ang)*f*0.4;
+        // se reactiva la vida
+        par.vida = Math.min(par.vidaMax, par.vida+f*0.4);
       }
     }
-  }
-  if(gotas.length > 220) gotas.splice(0, gotas.length-220);
+  };
+  procesar(particulasFondo);
+  procesar(particulasFrente);
 }
 function manchar(e){
   const p = pos(e);
   manchas.push({
     x:p.x, y:p.y,
-    r:8+Math.random()*14,
-    op:0.85,
-    chorros: Array.from({length:3+Math.floor(Math.random()*4)}, ()=>({
-      ang: Math.random()*Math.PI*2,
-      largo: 15+Math.random()*40,
-      ancho: 1+Math.random()*2
-    }))
+    r:18+Math.random()*22,
+    op:0.7,
+    edad:0
   });
-  if(manchas.length > 60) manchas.shift();
+  if(manchas.length > 40) manchas.shift();
+  // inyectar humo extra ahí
+  for(let i=0;i<8;i++){
+    const ang=Math.random()*Math.PI*2;
+    const v=2+Math.random()*4;
+    particulasFrente.push({
+      x:p.x, y:p.y,
+      vx:Math.cos(ang)*v, vy:Math.sin(ang)*v - 1,
+      r:(30+Math.random()*40)*DPR,
+      vida:1, vidaMax:1,
+      tono:355, sat:75, lum:20+Math.random()*10,
+      esFrente:true
+    });
+  }
+  if(particulasFrente.length > 80) particulasFrente.splice(0, particulasFrente.length-80);
 }
-lienzo.addEventListener('mousemove', mover);
-lienzo.addEventListener('mousedown', e=>{manchar(e); mover(e);});
-lienzo.addEventListener('touchmove', e=>{e.preventDefault(); mover(e);}, {passive:false});
-lienzo.addEventListener('touchstart', e=>{e.preventDefault(); manchar(e); mover(e);}, {passive:false});
+addEventListener('mousemove', mover);
+addEventListener('mousedown', e=>{manchar(e); mover(e);});
+addEventListener('touchmove', e=>{e.preventDefault(); mover(e);}, {passive:false});
+addEventListener('touchstart', e=>{e.preventDefault(); manchar(e); mover(e);}, {passive:false});
 
-/* ---------- 4. LOOP DE DIBUJO ---------- */
+/* ---------- ALTAR (cover) — pulsa con kick ---------- */
+const altar = document.getElementById('altar');
+const halo = document.getElementById('halo');
+
+/* ---------- LOOP ---------- */
 function dibujar(){
   requestAnimationFrame(dibujar);
   const a = leerAudio();
-  suaveG += (a.grave-suaveG)*0.14;
+  suaveG += (a.grave-suaveG)*0.12;
   suaveM += (a.medio-suaveM)*0.18;
   suaveA += (a.agudo-suaveA)*0.25;
-  suaveK += (a.kick-suaveK)*0.4;
+  suaveK += (a.kick-suaveK)*0.45;
 
-  // detectar pico de kick para pulso visual
   if(a.kick > 0.55 && a.kick > pulsoUlt) pulso = 1;
   pulsoUlt = a.kick;
-  pulso *= 0.88;
+  pulso *= 0.85;
 
-  // velo translúcido = persistencia + estela
-  cx.fillStyle = `rgba(8,6,10,${0.18 + pulso*0.05})`;
+  // velo persistente — el humo deja estela
+  cx.fillStyle = `rgba(6,4,10,${0.10 + pulso*0.04})`;
   cx.fillRect(0,0,W,H);
+  cxArriba.clearRect(0,0,W,H);
 
-  // breath del fondo: tinte sangre sutil con los graves
-  if(suaveG > 0.15){
-    cx.fillStyle = `rgba(61,10,10,${suaveG*0.04})`;
+  /* tinte sangre de fondo con los graves */
+  if(suaveG > 0.1){
+    cx.fillStyle = `rgba(90,14,28,${suaveG*0.025})`;
     cx.fillRect(0,0,W,H);
   }
 
-  /* --- la rejilla (el paywall) --- */
-  const lineWidth = (0.6 + suaveG*1.4 + pulso*0.8)*DPR;
-  cx.lineWidth = lineWidth;
-  const baseLum = 22 + suaveG*14 + pulso*16;
-  cx.strokeStyle = `hsl(0 50% ${baseLum}%)`;
+  /* pulso del cover */
+  const escala = 1 + pulso*0.04 + suaveG*0.02;
+  altar.style.transform = `translate(-50%,-50%) scale(${escala})`;
+  altar.style.filter = `contrast(${1.05+pulso*0.1}) saturate(${0.9+suaveK*0.3}) brightness(${1+pulso*0.15})`;
+  halo.style.transform = `translate(-50%,-50%) scale(${1 + pulso*0.15 + suaveG*0.08})`;
+  halo.style.opacity = 0.7 + suaveG*0.3 + pulso*0.2;
 
-  // relajar offsets de los nodos
-  for(const n of nodos){
-    n.ofX *= 0.92; n.ofY *= 0.92;
-    n.sangre *= 0.992;
-  }
+  /* dibujar partículas de humo */
+  const dibujarParticulas = (arr, contexto)=>{
+    for(let i=arr.length-1;i>=0;i--){
+      const p = arr[i];
+      p.x += p.vx*(1+suaveK*0.3);
+      p.y += p.vy*(1+suaveK*0.3);
+      // pequeña gravedad hacia arriba (humo sube)
+      p.vy -= 0.008;
+      // fricción
+      p.vx *= 0.985; p.vy *= 0.985;
+      p.vida -= 0.003;
 
-  // líneas horizontales
-  cx.beginPath();
-  for(let f=0;f<=FILAS;f++){
-    for(let c=0;c<COLS;c++){
-      const n1 = nodos[f*(COLS+1)+c];
-      const n2 = nodos[f*(COLS+1)+c+1];
-      const x1 = n1.cx*W+n1.ofX, y1 = n1.cy*H+n1.ofY;
-      const x2 = n2.cx*W+n2.ofX, y2 = n2.cy*H+n2.ofY;
-      cx.moveTo(x1,y1); cx.lineTo(x2,y2);
+      if(p.vida <= 0 || p.x < -200 || p.x > W+200 || p.y < -300){
+        arr[i] = nuevaParticula(p.esFrente);
+        continue;
+      }
+
+      const radioEfectivo = p.r * (1 + suaveG*0.5 + pulso*0.3);
+      const opacidad = p.vida * (0.18 + suaveM*0.12 + pulso*0.08);
+
+      const grad = contexto.createRadialGradient(p.x, p.y, 0, p.x, p.y, radioEfectivo);
+      grad.addColorStop(0, `hsla(${p.tono} ${p.sat}% ${p.lum + pulso*15}% / ${opacidad})`);
+      grad.addColorStop(0.5, `hsla(${p.tono-5} ${p.sat-15}% ${p.lum*0.7}% / ${opacidad*0.5})`);
+      grad.addColorStop(1, `hsla(${p.tono} 50% 5% / 0)`);
+      contexto.fillStyle = grad;
+      contexto.beginPath();
+      contexto.arc(p.x, p.y, radioEfectivo, 0, 6.28);
+      contexto.fill();
     }
-  }
-  cx.stroke();
+  };
 
-  // líneas verticales
-  cx.beginPath();
-  for(let c=0;c<=COLS;c++){
-    for(let f=0;f<FILAS;f++){
-      const n1 = nodos[f*(COLS+1)+c];
-      const n2 = nodos[(f+1)*(COLS+1)+c];
-      const x1 = n1.cx*W+n1.ofX, y1 = n1.cy*H+n1.ofY;
-      const x2 = n2.cx*W+n2.ofX, y2 = n2.cy*H+n2.ofY;
-      cx.moveTo(x1,y1); cx.lineTo(x2,y2);
-    }
-  }
-  cx.stroke();
+  dibujarParticulas(particulasFondo, cx);
+  dibujarParticulas(particulasFrente, cxArriba);
 
-  // intersecciones que sangran
-  for(const n of nodos){
-    if(n.sangre > 0.04){
-      const nx = n.cx*W+n.ofX, ny = n.cy*H+n.ofY;
-      cx.fillStyle = `hsla(0 75% ${30+n.sangre*25}% / ${n.sangre})`;
-      cx.beginPath();
-      cx.arc(nx, ny, (1.5+n.sangre*4)*DPR, 0, 6.28);
-      cx.fill();
-    }
+  /* manchas — salpicaduras suaves que se disipan en humo */
+  for(let i=manchas.length-1;i>=0;i--){
+    const m = manchas[i];
+    m.edad += 0.012;
+    if(m.edad > 1){ manchas.splice(i,1); continue; }
+    const rad = m.r * (1 + m.edad*2) * DPR;
+    const op = m.op * (1 - m.edad);
+    const grad = cxArriba.createRadialGradient(m.x, m.y, 0, m.x, m.y, rad);
+    grad.addColorStop(0, `hsla(355 80% 35% / ${op})`);
+    grad.addColorStop(0.4, `hsla(350 65% 22% / ${op*0.6})`);
+    grad.addColorStop(1, 'hsla(350 50% 8% / 0)');
+    cxArriba.fillStyle = grad;
+    cxArriba.beginPath();
+    cxArriba.arc(m.x, m.y, rad, 0, 6.28);
+    cxArriba.fill();
   }
 
-  /* --- gotas que caen --- */
-  for(let i=gotas.length-1;i>=0;i--){
-    const g = gotas[i];
-    g.y += g.vy*DPR*(1+suaveK*0.5);
-    g.vy += 0.05;
-    g.vida -= 0.005;
-    if(g.vida <= 0 || g.y > H+20){ gotas.splice(i,1); continue; }
-    cx.strokeStyle = `hsla(0 70% ${28+suaveA*15}% / ${g.vida*0.85})`;
-    cx.lineWidth = g.ancho*DPR;
-    cx.beginPath();
-    cx.moveTo(g.x, g.y-g.vy*3);
-    cx.lineTo(g.x, g.y);
-    cx.stroke();
-  }
-
-  /* --- manchas permanentes (clicks/taps) --- */
-  for(const m of manchas){
-    // mancha central
-    const grad = cx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r*DPR);
-    grad.addColorStop(0, `hsla(0 78% 32% / ${m.op})`);
-    grad.addColorStop(0.5, `hsla(0 65% 22% / ${m.op*0.7})`);
-    grad.addColorStop(1, 'hsla(0 50% 12% / 0)');
-    cx.fillStyle = grad;
-    cx.beginPath();
-    cx.arc(m.x, m.y, m.r*DPR, 0, 6.28);
-    cx.fill();
-    // chorros
-    cx.strokeStyle = `hsla(0 70% 25% / ${m.op*0.8})`;
-    cx.lineWidth = 1.4*DPR;
-    for(const ch of m.chorros){
-      cx.beginPath();
-      cx.moveTo(m.x, m.y);
-      cx.lineTo(m.x+Math.cos(ch.ang)*ch.largo*DPR, m.y+Math.sin(ch.ang)*ch.largo*DPR);
-      cx.stroke();
-    }
-  }
-
-  /* --- estela del cursor --- */
+  /* estela del cursor */
   if(raton.activo){
     const vel = Math.hypot(raton.vx, raton.vy);
-    cx.fillStyle = `hsla(0 85% 45% / ${Math.min(0.7, vel/40)})`;
-    cx.beginPath();
-    cx.arc(raton.x, raton.y, (2+vel/10)*DPR, 0, 6.28);
-    cx.fill();
+    if(vel > 1){
+      const radEst = (12 + vel*0.6)*DPR;
+      const grad = cxArriba.createRadialGradient(raton.x, raton.y, 0, raton.x, raton.y, radEst);
+      grad.addColorStop(0, `hsla(355 85% 50% / ${Math.min(0.5, vel/50)})`);
+      grad.addColorStop(1, 'hsla(355 70% 20% / 0)');
+      cxArriba.fillStyle = grad;
+      cxArriba.beginPath();
+      cxArriba.arc(raton.x, raton.y, radEst, 0, 6.28);
+      cxArriba.fill();
+    }
   }
-  raton.vx *= 0.82; raton.vy *= 0.82;
+  raton.vx *= 0.85; raton.vy *= 0.85;
 }
 dibujar();
 
-/* ---------- 5. CONTROLES ---------- */
+/* ---------- CONTROLES ---------- */
 document.getElementById('btn').addEventListener('click', ()=>{
   arrancarAudio();
   document.getElementById('portada').classList.add('fuera');
   document.getElementById('hud').classList.add('dentro');
+  altar.classList.add('dentro');
+  halo.classList.add('dentro');
   setTimeout(()=>{
     document.getElementById('pista-nota').classList.add('aparece');
     setTimeout(()=>{
       document.getElementById('pista-nota').classList.remove('aparece');
-    }, 4000);
-  }, 1500);
+    }, 5000);
+  }, 2000);
 });
 
 document.getElementById('vol').addEventListener('input', e=>{
   if(ganancia) ganancia.gain.value = parseFloat(e.target.value);
 });
 
-// Cuando termina el track, fade de la rejilla pero las manchas se quedan
 audioEl.addEventListener('ended', ()=>{
-  document.getElementById('pista-nota').textContent = 'la transmisión termina · las manchas quedan';
+  document.getElementById('pista-nota').textContent = 'la transmisión termina · el humo permanece';
   document.getElementById('pista-nota').classList.add('aparece');
 });
 </script>
