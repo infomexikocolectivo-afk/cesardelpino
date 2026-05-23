@@ -426,9 +426,9 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
         </div>
       </div>
 
-      <a href="/ome/" class="ome-cta">
+      <span class="ome-cta is-disabled" aria-disabled="true" role="link">
         Entrar al universo Ōme <span class="arrow">→</span>
-      </a>
+      </span>
     </div>
   </div>
 </section>
@@ -1353,6 +1353,10 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 .ome-cta:hover { background: var(--accent-gold); color: var(--bg-deep); }
 .ome-cta .arrow { transition: transform 0.3s ease; }
 .ome-cta:hover .arrow { transform: translateX(4px); }
+
+.ome-cta.is-disabled { cursor: not-allowed; }
+.ome-cta.is-disabled:hover { background: transparent; color: var(--accent-gold); }
+.ome-cta.is-disabled:hover .arrow { transform: none; }
 
 /* RELEASES */
 .section-releases {
