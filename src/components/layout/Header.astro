@@ -7,8 +7,8 @@ export interface Props {
 const { lang = 'es', currentPath = '/' } = Astro.props;
 
 const labels = {
-  es: { obra: 'Obra', estudio: 'Estudio', ome: 'Ōme', contacto: 'Contacto' },
-  en: { obra: 'Works', estudio: 'Studio', ome: 'Ōme', contacto: 'Contact' },
+  es: { obra: 'Obra', estudio: 'Estudio', ome: 'Ōme' },
+  en: { obra: 'Works', estudio: 'Studio', ome: 'Ōme' },
 };
 
 const t = labels[lang];
@@ -23,7 +23,6 @@ const langPrefix = lang === 'en' ? '/en' : '';
       <li><a href={`${langPrefix}/#works`}>{t.obra}</a></li>
       <li><a href={`${langPrefix}/#studio`}>{t.estudio}</a></li>
       <li><a href={`${langPrefix}/#ome`}>{t.ome}</a></li>
-      <li><a href={`${langPrefix}/contacto/`}>{t.contacto}</a></li>
     </ul>
     <div class="lang-toggle">
       <a href={currentPath.replace('/en', '') || '/'} class={lang === 'es' ? 'active' : ''}>ES</a>
@@ -59,12 +58,6 @@ const langPrefix = lang === 'en' ? '/en' : '';
         <a href={`${langPrefix}/#ome`} class="mobile-link">
           <span class="link-name">{t.ome}</span>
           <span class="link-num">03</span>
-        </a>
-      </li>
-      <li style="--i:3">
-        <a href={`${langPrefix}/contacto/`} class="mobile-link">
-          <span class="link-name">{t.contacto}</span>
-          <span class="link-num">04</span>
         </a>
       </li>
     </ul>
