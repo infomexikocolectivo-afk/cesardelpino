@@ -159,15 +159,21 @@
     cursor:pointer;border:none;
     color:var(--hueso);
     font-family:var(--sans);
-    font-size:clamp(11px,1.7vw,13px);
-    letter-spacing:.32em;text-transform:uppercase;
-    padding:1.15em 2.6em;
+    padding:1.2em 2.6em;
     border-radius:999px;
-    font-weight:500;
     transition:background .4s ease;
     -webkit-appearance:none;appearance:none;
-    display:block;}
+    display:flex;flex-direction:column;align-items:center;gap:.4em;}
   .iniciar:hover{background:var(--vino-oscuro);}
+  .iniciar-grande{font-family:var(--serif);
+    font-size:clamp(18px,2.8vw,24px);
+    letter-spacing:.04em;font-weight:400;
+    font-style:italic;color:var(--hueso);
+    line-height:1;text-transform:none;}
+  .iniciar-chico{font-family:var(--sans);
+    font-size:9px;letter-spacing:.4em;
+    text-transform:uppercase;color:var(--tinta);
+    font-weight:400;padding-left:.4em;line-height:1;}
   @keyframes spin-border{
     to{transform:rotate(360deg);}
   }
@@ -413,7 +419,10 @@
     <div class="hint">tap anywhere · feel the drums</div>
 
     <div class="iniciar-wrap">
-      <button class="iniciar" id="btn" type="button">Begin experience · I authorize audio playback</button>
+      <button class="iniciar" id="btn" type="button">
+  <span class="iniciar-grande">Begin experience</span>
+  <span class="iniciar-chico">I authorize audio playback</span>
+</button>
     </div>
 
     <div class="pie">
