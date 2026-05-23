@@ -192,9 +192,9 @@
   /* ============================================
      EXPERIENCE — editorial layout
      ============================================ */
-  #altar{position:fixed;z-index:5;left:50%;top:42%;
+  #altar{position:fixed;z-index:5;left:50%;top:38%;
     transform:translate(-50%,-50%);
-    width:clamp(180px,32vmin,360px);
+    width:clamp(170px,28vmin,320px);
     aspect-ratio:1/1;
     opacity:0;transition:opacity 2s ease;
     pointer-events:none;will-change:transform,filter;}
@@ -208,9 +208,9 @@
     filter:contrast(1.05) saturate(.9);
     pointer-events:none;-webkit-user-drag:none;}
 
-  #halo{position:fixed;z-index:4;left:50%;top:42%;
+  #halo{position:fixed;z-index:4;left:50%;top:38%;
     transform:translate(-50%,-50%);
-    width:clamp(300px,58vmin,680px);
+    width:clamp(260px,48vmin,560px);
     aspect-ratio:1/1;
     opacity:0;transition:opacity 2s ease;
     pointer-events:none;
@@ -225,7 +225,7 @@
 
   /* TÍTULO arriba del cover, centrado */
   .titulo-arriba{position:fixed;left:50%;
-    top:calc(42% - clamp(170px,25vmin,280px));
+    top:calc(38% - clamp(150px,22vmin,240px));
     transform:translateX(-50%);
     text-align:center;width:90vw;}
   .titulo-arriba .t1{display:block;
@@ -265,9 +265,10 @@
 
   /* CRÉDITOS — debajo del cover, centrados */
   .creditos{position:fixed;left:50%;
-    top:calc(42% + clamp(150px,22vmin,250px));
+    top:calc(38% + clamp(140px,21vmin,220px));
     transform:translateX(-50%);
-    text-align:center;width:90vw;max-width:520px;display:flex;flex-direction:column;gap:.15em;}
+    text-align:center;width:90vw;max-width:560px;
+    display:flex;flex-direction:column;gap:.1em;}
   .cr-row{font-family:var(--sans);font-size:clamp(10px,1vw,11.5px);
     letter-spacing:.32em;text-transform:uppercase;
     color:rgba(240,232,220,.85);
@@ -322,11 +323,11 @@
   @media (max-width:700px){
     .marca{font-size:10px;letter-spacing:.5em;}
     .invitacion{font-size:16px;}
-    .titulo-arriba{top:calc(42% - clamp(150px,32vmin,200px));}
+    .titulo-arriba{top:calc(38% - clamp(140px,30vmin,200px));}
     .titulo-arriba .t1{font-size:clamp(28px,7vw,42px);}
     .titulo-arriba .ome{font-size:10px;letter-spacing:.45em;margin-top:.8em;}
     .marca-hud{display:none;}
-    .creditos{top:calc(42% + clamp(140px,32vmin,210px));}
+    .creditos{top:calc(38% + clamp(125px,28vmin,180px));}
     .cr-row{font-size:9px;letter-spacing:.22em;line-height:2;}
     .redes{grid-template-columns:1fr;gap:.5em;
       width:min(360px,80vw);bottom:5vw;}
