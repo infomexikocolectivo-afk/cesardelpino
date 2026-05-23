@@ -1,18 +1,20 @@
 ---
 // src/pages/paywalldesangre.astro
-// Paywall de Sangre — experiencia interactiva v2
-// Cover al centro, humo rojo vino reactivo al audio y al mouse/dedo
+// Paywall de Sangre v3 — Cormorant, intro, humo denso, créditos, bongos A/B, fix iPhone
 ---
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Paywall de Sangre — Ōme</title>
 <meta name="description" content="Experiencia interactiva audio-reactiva del track Paywall de Sangre de Ōme.">
 <meta property="og:title" content="Paywall de Sangre — Ōme">
 <meta property="og:description" content="Experiencia interactiva audio-reactiva.">
 <meta property="og:image" content="/audio/paywalldesangre-cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --vacio:#06040a;
@@ -25,35 +27,55 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{height:100%;background:var(--vacio);overflow:hidden;
-    font-family:'Georgia','Times New Roman',serif;color:var(--hueso);
-    -webkit-tap-highlight-color:transparent;}
+    font-family:'Cormorant Garamond', serif;
+    color:var(--hueso);
+    -webkit-tap-highlight-color:transparent;
+    -webkit-touch-callout:none;
+    user-select:none;
+    -webkit-user-select:none;}
   canvas{display:block;position:fixed;inset:0;}
 
   /* ---- pantalla de entrada ---- */
   #portada{position:fixed;inset:0;z-index:30;display:flex;
     flex-direction:column;align-items:center;justify-content:center;
     background:radial-gradient(ellipse at 50% 55%, #1a0a12 0%, #06040a 75%);
-    transition:opacity 1.6s ease;text-align:center;padding:8vw;}
+    transition:opacity 1.6s ease;text-align:center;padding:8vw 6vw;}
   #portada.fuera{opacity:0;pointer-events:none;}
-  .artista{font-size:clamp(11px,1.8vw,14px);letter-spacing:.6em;
-    text-transform:uppercase;color:var(--tinta);margin-bottom:2.4rem;
-    padding-left:.6em;}
-  .titulo{font-size:clamp(40px,9vw,112px);line-height:.95;
-    color:var(--hueso);font-weight:400;letter-spacing:-.015em;
-    text-shadow:0 0 100px rgba(168,18,26,.35);}
-  .titulo em{font-style:italic;color:var(--sangre);}
-  .iniciar{margin-top:3.4rem;background:none;cursor:pointer;
+
+  .artista{font-size:clamp(11px,1.6vw,13px);letter-spacing:.55em;
+    text-transform:uppercase;color:var(--tinta);margin-bottom:2rem;
+    padding-left:.5em;font-weight:400;}
+
+  .titulo{font-size:clamp(46px,10vw,128px);line-height:.95;
+    color:var(--hueso);font-weight:300;letter-spacing:-.01em;
+    text-shadow:0 0 100px rgba(168,18,26,.4);
+    font-family:'Cormorant Garamond', serif;}
+  .titulo em{font-style:italic;color:var(--sangre);font-weight:400;}
+
+  .intro{margin-top:2.2rem;max-width:560px;
+    font-size:clamp(15px,2.3vw,19px);
+    font-style:italic;line-height:1.55;color:rgba(232,224,212,.75);
+    font-weight:300;letter-spacing:.005em;}
+  .intro strong{font-style:normal;font-weight:400;color:var(--hueso);}
+
+  .iniciar{margin-top:3rem;background:none;cursor:pointer;
     border:1px solid var(--vino);color:var(--hueso);
-    font-family:inherit;font-size:clamp(11px,2vw,13px);
-    letter-spacing:.28em;text-transform:uppercase;padding:1.2em 2.6em;
-    border-radius:999px;transition:all .5s ease;}
-  .iniciar:hover{background:var(--vino);color:var(--hueso);
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(12px,1.9vw,14px);
+    letter-spacing:.28em;text-transform:uppercase;padding:1.1em 2.4em;
+    border-radius:999px;transition:all .5s ease;font-weight:400;
+    -webkit-appearance:none;appearance:none;}
+  .iniciar:hover, .iniciar:active{background:var(--vino);
     border-color:var(--sangre);
     box-shadow:0 0 60px rgba(168,18,26,.45);}
-  .pie{margin-top:2.6rem;font-size:10px;color:var(--tinta);
-    letter-spacing:.16em;text-transform:uppercase;}
 
-  /* ---- COVER AL CENTRO ---- */
+  .pie{margin-top:2.4rem;font-size:11px;color:var(--tinta);
+    letter-spacing:.22em;text-transform:uppercase;line-height:1.8;}
+  .pie .firma{display:block;margin-top:.4em;
+    font-style:italic;letter-spacing:.08em;text-transform:none;
+    font-size:13px;color:rgba(168,18,26,.7);}
+
+  /* ---- COVER al centro ---- */
   #altar{position:fixed;z-index:5;left:50%;top:50%;
     transform:translate(-50%,-50%);
     width:clamp(220px,38vmin,440px);
@@ -63,22 +85,21 @@
     will-change:transform,filter;}
   #altar.dentro{opacity:1;}
   #altar img{width:100%;height:100%;object-fit:cover;
-    display:block;
-    border-radius:2px;
+    display:block;border-radius:2px;
     box-shadow:
       0 0 80px rgba(168,18,26,.35),
       0 0 160px rgba(90,14,28,.25),
       0 0 0 1px rgba(168,18,26,.15);
-    filter:contrast(1.05) saturate(0.9);}
-  /* halo detrás del cover */
+    filter:contrast(1.05) saturate(0.9);
+    pointer-events:none;-webkit-user-drag:none;}
   #halo{position:fixed;z-index:4;left:50%;top:50%;
     transform:translate(-50%,-50%);
-    width:clamp(280px,50vmin,580px);
+    width:clamp(300px,55vmin,640px);
     aspect-ratio:1/1;
     opacity:0;transition:opacity 2s ease;
     pointer-events:none;
-    background:radial-gradient(circle, rgba(168,18,26,.18) 0%, rgba(90,14,28,.08) 40%, transparent 70%);
-    filter:blur(20px);
+    background:radial-gradient(circle, rgba(168,18,26,.22) 0%, rgba(90,14,28,.1) 40%, transparent 70%);
+    filter:blur(24px);
     will-change:transform,opacity;}
   #halo.dentro{opacity:1;}
 
@@ -86,32 +107,47 @@
   #hud{position:fixed;z-index:20;inset:0;pointer-events:none;
     opacity:0;transition:opacity 1.8s ease;}
   #hud.dentro{opacity:1;}
-  .esquina{position:absolute;font-size:11px;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--tinta);}
-  .arr-izq{top:4vw;left:4vw;}
-  .titulo-hud{color:var(--hueso);font-size:13px;letter-spacing:.22em;
-    opacity:.85;}
-  .artista-hud{color:var(--sangre);font-style:italic;font-size:11px;
-    text-transform:none;letter-spacing:.05em;margin-top:.3em;opacity:.9;}
+
+  .arr-izq{position:absolute;top:4vw;left:4vw;}
+  .titulo-hud{color:var(--hueso);
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(16px,2vw,22px);
+    letter-spacing:.06em;
+    font-weight:400;
+    line-height:1;}
+  .titulo-hud em{font-style:italic;color:var(--sangre);font-weight:500;}
+  .ome-hud{color:var(--sangre);font-style:italic;
+    font-size:clamp(22px,2.8vw,32px);
+    margin-top:.15em;font-weight:500;
+    letter-spacing:.04em;
+    text-shadow:0 0 20px rgba(168,18,26,.4);}
+
+  .creditos{position:absolute;bottom:14vw;left:4vw;
+    font-size:10px;color:var(--tinta);
+    letter-spacing:.18em;text-transform:uppercase;
+    line-height:1.9;font-family:'Cormorant Garamond',serif;font-weight:400;}
+  .creditos strong{color:rgba(232,224,212,.6);font-weight:500;}
 
   .redes{position:absolute;bottom:4vw;left:50%;transform:translateX(-50%);
-    display:flex;gap:1.2em;pointer-events:auto;flex-wrap:wrap;
+    display:flex;gap:1em;pointer-events:auto;flex-wrap:wrap;
     justify-content:center;}
-  .red{font-family:inherit;font-size:11px;letter-spacing:.22em;
+  .red{font-family:'Cormorant Garamond',serif;
+    font-size:11px;letter-spacing:.22em;
     text-transform:uppercase;color:var(--hueso);text-decoration:none;
     border:1px solid rgba(90,14,28,.55);padding:.9em 1.6em;
     border-radius:999px;transition:all .4s ease;
     background:rgba(6,4,10,.45);
     backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);}
+    -webkit-backdrop-filter:blur(8px);font-weight:400;}
   .red:hover{background:rgba(90,14,28,.7);border-color:var(--sangre);
     box-shadow:0 0 40px rgba(168,18,26,.35);}
   .red em{font-style:italic;color:var(--sangre);
-    text-transform:none;letter-spacing:.04em;margin-left:.4em;}
+    text-transform:none;letter-spacing:.04em;margin-left:.4em;
+    font-weight:500;font-size:13px;}
 
   .vol{position:absolute;top:4vw;right:4vw;pointer-events:auto;
-    display:flex;align-items:center;gap:.8em;}
-  .vol input{-webkit-appearance:none;appearance:none;width:90px;height:1px;
+    display:flex;align-items:center;gap:.7em;}
+  .vol input{-webkit-appearance:none;appearance:none;width:80px;height:1px;
     background:var(--vino);outline:none;}
   .vol input::-webkit-slider-thumb{-webkit-appearance:none;width:11px;
     height:11px;border-radius:50%;background:var(--sangre);cursor:pointer;}
@@ -119,46 +155,59 @@
     border-radius:50%;background:var(--sangre);cursor:pointer;}
   .vol span{font-size:9px;letter-spacing:.22em;color:var(--tinta);}
 
-  .pista-nota{position:absolute;left:50%;bottom:14vw;transform:translateX(-50%);
-    font-size:10px;letter-spacing:.22em;color:rgba(200,196,190,.4);
+  .pista-nota{position:absolute;left:50%;bottom:12vw;transform:translateX(-50%);
+    font-size:13px;letter-spacing:.18em;color:rgba(200,196,190,.5);
     text-align:center;text-transform:uppercase;opacity:0;
-    transition:opacity 1.6s ease;pointer-events:none;font-style:italic;}
+    transition:opacity 1.6s ease;pointer-events:none;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;}
   .pista-nota.aparece{opacity:1;}
+
+  #humo-arriba{position:fixed;inset:0;z-index:10;pointer-events:none;
+    mix-blend-mode:screen;}
 
   @media (max-width:640px){
     .vol{top:auto;bottom:18vw;right:50%;transform:translateX(50%);}
-    .redes{bottom:6vw;gap:.6em;}
-    .red{font-size:10px;padding:.8em 1.2em;}
-    .pista-nota{bottom:24vw;}
+    .redes{bottom:5vw;gap:.5em;}
+    .red{font-size:10px;padding:.7em 1.1em;letter-spacing:.18em;}
+    .red em{font-size:12px;}
+    .pista-nota{bottom:22vw;font-size:11px;}
+    .creditos{bottom:22vw;left:50%;transform:translateX(-50%);
+      text-align:center;font-size:9px;letter-spacing:.14em;}
+    .arr-izq{top:6vw;left:50%;transform:translateX(-50%);text-align:center;}
+    .titulo-hud{font-size:15px;}
+    .ome-hud{font-size:24px;}
+    .intro{font-size:15px;}
+  }
+
+  /* iOS safe area */
+  @supports (padding: env(safe-area-inset-top)){
+    #portada{padding-top:max(8vw, env(safe-area-inset-top));
+      padding-bottom:max(8vw, env(safe-area-inset-bottom));}
   }
 </style>
 </head>
 <body>
 
 <canvas id="lienzo"></canvas>
-
-<!-- Halo detrás del cover -->
 <div id="halo"></div>
-
-<!-- COVER al centro (altar) -->
-<div id="altar">
-  <img src="/audio/paywalldesangre-cover.png" alt="Paywall de Sangre" draggable="false">
-</div>
-
-<!-- Canvas de humo encima del cover -->
+<div id="altar"><img src="/audio/paywalldesangre-cover.png" alt="Paywall de Sangre" draggable="false"></div>
 <canvas id="humo-arriba"></canvas>
 
-<!-- HUD -->
 <div id="hud">
-  <div class="esquina arr-izq">
-    <div class="titulo-hud">Paywall de Sangre</div>
-    <div class="artista-hud">Ōme</div>
+  <div class="arr-izq">
+    <div class="titulo-hud">Paywall <em>de Sangre</em></div>
+    <div class="ome-hud">Ōme</div>
   </div>
   <div class="vol">
     <span>VOL</span>
     <input type="range" id="vol" min="0" max="1" step="0.01" value="0.85">
   </div>
-  <div class="pista-nota" id="pista-nota">arrastra el humo · toca para sangrar</div>
+  <div class="creditos">
+    <strong>Track:</strong> Paywall de Sangre<br>
+    <strong>Compuesto y producido por:</strong> César Del Pino<br>
+    <strong>Bajo el proyecto:</strong> Ōme
+  </div>
+  <div class="pista-nota" id="pista-nota">arrastra el humo · toca para hacer música conmigo</div>
   <div class="redes">
     <a class="red" href="https://soundcloud.com/omemusic/paywall-sangre" target="_blank" rel="noopener">
       Escucha en <em>SoundCloud</em>
@@ -169,48 +218,93 @@
   </div>
 </div>
 
-<!-- Portada -->
 <div id="portada">
   <div class="artista">Ōme</div>
   <h1 class="titulo">Paywall <em>de Sangre</em></h1>
-  <button class="iniciar" id="btn">Iniciar experiencia · Autorizo reproducción de audio</button>
-  <p class="pie">7 min · usa audífonos</p>
+  <p class="intro">
+    Bienvenid<em>a</em> a la experiencia sonora de mi último lanzamiento.
+    Diviértete, deja que el humo te envuelva, <strong>y hagamos música juntos</strong>.
+  </p>
+  <button class="iniciar" id="btn" type="button">Iniciar experiencia · Autorizo reproducción de audio</button>
+  <p class="pie">
+    7 min · usa audífonos
+    <span class="firma">una experiencia de César Del Pino</span>
+  </p>
 </div>
 
-<audio id="audio" preload="auto" crossorigin="anonymous">
+<audio id="audio" preload="auto" crossorigin="anonymous" playsinline webkit-playsinline>
   <source src="/audio/paywalldesangre.mp3" type="audio/mpeg">
 </audio>
-
-<style>
-  #humo-arriba{position:fixed;inset:0;z-index:10;pointer-events:none;
-    mix-blend-mode:screen;}
-</style>
+<audio id="bongoA" preload="auto" playsinline webkit-playsinline>
+  <source src="/audio/bongo-a.mp3" type="audio/mpeg">
+</audio>
+<audio id="bongoB" preload="auto" playsinline webkit-playsinline>
+  <source src="/audio/bongo-b.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 /* ============================================================
-   PAYWALL DE SANGRE v2 — Humo rojo vino reactivo
-   - Cover al centro como altar
-   - Humo nebuloso debajo (z-index 1) y encima del cover (z-index 10)
-   - El mouse/dedo arrastra el humo como líquido viscoso
-   - Pulsa con kick, respira con graves
+   PAYWALL DE SANGRE v3
    ============================================================ */
 
-/* ---------- AUDIO ---------- */
 let ctx, analizador, datos, fuente, ganancia;
+let bongoBufferA = null, bongoBufferB = null;
+let alternar = 0;
 const audioEl = document.getElementById('audio');
+const bongoElA = document.getElementById('bongoA');
+const bongoElB = document.getElementById('bongoB');
+
+/* precargar bongos como AudioBuffer para latencia mínima */
+async function precargarBongos(){
+  if(!ctx) return;
+  try{
+    const cargarBuffer = async (url)=>{
+      const r = await fetch(url);
+      const ab = await r.arrayBuffer();
+      return await ctx.decodeAudioData(ab);
+    };
+    bongoBufferA = await cargarBuffer('/audio/bongo-a.mp3');
+    bongoBufferB = await cargarBuffer('/audio/bongo-b.mp3');
+  }catch(e){
+    console.warn('bongos via fetch falló, usaré HTMLAudio:', e);
+  }
+}
 
 function arrancarAudio(){
   ctx = new (window.AudioContext||window.webkitAudioContext)();
+  if(ctx.state === 'suspended') ctx.resume();
   fuente = ctx.createMediaElementSource(audioEl);
   ganancia = ctx.createGain();
-  ganancia.gain.value = 0.85;
+  ganancia.gain.value = parseFloat(document.getElementById('vol').value || 0.85);
   analizador = ctx.createAnalyser();
   analizador.fftSize = 1024;
   datos = new Uint8Array(analizador.frequencyBinCount);
   fuente.connect(ganancia);
   ganancia.connect(analizador);
   analizador.connect(ctx.destination);
-  audioEl.play().catch(e=>console.warn('audio:',e));
+  const p = audioEl.play();
+  if(p && p.catch) p.catch(e=>console.warn('audio:',e));
+  precargarBongos();
+}
+
+function tocarBongo(){
+  // alternar A/B
+  const usarA = (alternar % 2) === 0;
+  alternar++;
+  if(ctx && (usarA ? bongoBufferA : bongoBufferB)){
+    // Web Audio (latencia mínima, mezcla limpia)
+    const src = ctx.createBufferSource();
+    src.buffer = usarA ? bongoBufferA : bongoBufferB;
+    const g = ctx.createGain();
+    g.gain.value = 0.9;
+    src.connect(g);
+    g.connect(ctx.destination);
+    src.start(0);
+  }else{
+    // Fallback HTMLAudio
+    const el = usarA ? bongoElA : bongoElB;
+    try{ el.currentTime = 0; el.play().catch(()=>{}); }catch(e){}
+  }
 }
 
 function leerAudio(){
@@ -227,7 +321,7 @@ function leerAudio(){
     agudo:a/((n-c2)*255), kick:k/255};
 }
 
-/* ---------- CANVAS (humo de fondo) ---------- */
+/* ---------- CANVAS ---------- */
 const lienzo = document.getElementById('lienzo');
 const cx = lienzo.getContext('2d');
 const humoArriba = document.getElementById('humo-arriba');
@@ -243,9 +337,10 @@ function medir(){
 }
 addEventListener('resize', medir); medir();
 
-/* ---------- PARTÍCULAS DE HUMO ---------- */
-const PARTICULAS_FONDO = 90;
-const PARTICULAS_FRENTE = 35;
+/* ---------- HUMO DENSO ---------- */
+const esMovil = innerWidth < 700;
+const PART_FONDO = esMovil ? 110 : 180;
+const PART_FRENTE = esMovil ? 45 : 70;
 let particulasFondo = [];
 let particulasFrente = [];
 let manchas = [];
@@ -254,52 +349,51 @@ let suaveG=0, suaveM=0, suaveA=0, suaveK=0, pulso=0, pulsoUlt=0;
 
 function nuevaParticula(esFrente=false){
   const ang = Math.random()*Math.PI*2;
-  const rad = Math.random()*Math.min(W,H)*0.5 + Math.min(W,H)*0.1;
+  const rad = Math.random()*Math.min(W,H)*0.7 + Math.min(W,H)*0.05;
   return {
     x: W/2 + Math.cos(ang)*rad,
     y: H/2 + Math.sin(ang)*rad,
-    vx:(Math.random()-0.5)*0.6,
-    vy:(Math.random()-0.5)*0.6 - 0.2,
-    r: esFrente ? (40+Math.random()*60)*DPR : (60+Math.random()*120)*DPR,
+    vx:(Math.random()-0.5)*0.8,
+    vy:(Math.random()-0.5)*0.8 - 0.3,
+    r: esFrente ? (50+Math.random()*90)*DPR : (90+Math.random()*180)*DPR,
     vida: Math.random(),
-    vidaMax: 0.8+Math.random()*0.6,
-    tono: 350+Math.random()*15,           // rojo vino
-    sat: 55+Math.random()*25,
-    lum: 12+Math.random()*15,
+    vidaMax: 0.9+Math.random()*0.7,
+    tono: 350+Math.random()*15,
+    sat: 55+Math.random()*30,
+    lum: 10+Math.random()*18,
     esFrente
   };
 }
-for(let i=0;i<PARTICULAS_FONDO;i++) particulasFondo.push(nuevaParticula(false));
-for(let i=0;i<PARTICULAS_FRENTE;i++) particulasFrente.push(nuevaParticula(true));
+for(let i=0;i<PART_FONDO;i++) particulasFondo.push(nuevaParticula(false));
+for(let i=0;i<PART_FRENTE;i++) particulasFrente.push(nuevaParticula(true));
 
 /* ---------- INTERACCIÓN ---------- */
 function pos(e){
-  const t = e.touches ? e.touches[0] : e;
+  const t = (e.touches && e.touches.length) ? e.touches[0] :
+            (e.changedTouches && e.changedTouches.length) ? e.changedTouches[0] : e;
   return {x:t.clientX*DPR, y:t.clientY*DPR};
 }
 function mover(e){
+  if(e.cancelable && e.touches) e.preventDefault();
   const p = pos(e);
   raton.vx = p.x-raton.px; raton.vy = p.y-raton.py;
   raton.px = p.x; raton.py = p.y;
   raton.x = p.x; raton.y = p.y; raton.activo = true;
 
-  // arrastra el humo cercano como líquido viscoso
-  const radio = Math.min(W,H)*0.18;
-  const fuerzaMax = 0.18;
+  const radio = Math.min(W,H)*0.22;
+  const fuerzaMax = 0.22;
   const procesar = (arr)=>{
     for(const par of arr){
       const dx = par.x-p.x, dy = par.y-p.y;
       const d = Math.hypot(dx,dy);
       if(d < radio){
         const f = (1 - d/radio) * fuerzaMax;
-        par.vx += raton.vx * f * 0.08;
-        par.vy += raton.vy * f * 0.08;
-        // empuje radial leve hacia afuera
+        par.vx += raton.vx * f * 0.1;
+        par.vy += raton.vy * f * 0.1;
         const ang = Math.atan2(dy,dx);
-        par.vx += Math.cos(ang)*f*0.4;
-        par.vy += Math.sin(ang)*f*0.4;
-        // se reactiva la vida
-        par.vida = Math.min(par.vidaMax, par.vida+f*0.4);
+        par.vx += Math.cos(ang)*f*0.5;
+        par.vy += Math.sin(ang)*f*0.5;
+        par.vida = Math.min(par.vidaMax, par.vida+f*0.5);
       }
     }
   };
@@ -307,39 +401,35 @@ function mover(e){
   procesar(particulasFrente);
 }
 function manchar(e){
+  if(e.cancelable && e.touches) e.preventDefault();
   const p = pos(e);
-  manchas.push({
-    x:p.x, y:p.y,
-    r:18+Math.random()*22,
-    op:0.7,
-    edad:0
-  });
-  if(manchas.length > 40) manchas.shift();
-  // inyectar humo extra ahí
-  for(let i=0;i<8;i++){
+  tocarBongo();
+  manchas.push({x:p.x, y:p.y, r:22+Math.random()*26, op:0.75, edad:0});
+  if(manchas.length > 50) manchas.shift();
+  for(let i=0;i<12;i++){
     const ang=Math.random()*Math.PI*2;
-    const v=2+Math.random()*4;
+    const v=2+Math.random()*5;
     particulasFrente.push({
       x:p.x, y:p.y,
-      vx:Math.cos(ang)*v, vy:Math.sin(ang)*v - 1,
-      r:(30+Math.random()*40)*DPR,
+      vx:Math.cos(ang)*v, vy:Math.sin(ang)*v - 1.2,
+      r:(40+Math.random()*50)*DPR,
       vida:1, vidaMax:1,
-      tono:355, sat:75, lum:20+Math.random()*10,
+      tono:355, sat:78, lum:22+Math.random()*12,
       esFrente:true
     });
   }
-  if(particulasFrente.length > 80) particulasFrente.splice(0, particulasFrente.length-80);
+  if(particulasFrente.length > 120) particulasFrente.splice(0, particulasFrente.length-120);
 }
+
 addEventListener('mousemove', mover);
 addEventListener('mousedown', e=>{manchar(e); mover(e);});
-addEventListener('touchmove', e=>{e.preventDefault(); mover(e);}, {passive:false});
-addEventListener('touchstart', e=>{e.preventDefault(); manchar(e); mover(e);}, {passive:false});
+addEventListener('touchmove', mover, {passive:false});
+addEventListener('touchstart', e=>{manchar(e); mover(e);}, {passive:false});
 
-/* ---------- ALTAR (cover) — pulsa con kick ---------- */
+/* ---------- LOOP ---------- */
 const altar = document.getElementById('altar');
 const halo = document.getElementById('halo');
 
-/* ---------- LOOP ---------- */
 function dibujar(){
   requestAnimationFrame(dibujar);
   const a = leerAudio();
@@ -352,46 +442,40 @@ function dibujar(){
   pulsoUlt = a.kick;
   pulso *= 0.85;
 
-  // velo persistente — el humo deja estela
-  cx.fillStyle = `rgba(6,4,10,${0.10 + pulso*0.04})`;
+  cx.fillStyle = `rgba(6,4,10,${0.08 + pulso*0.03})`;
   cx.fillRect(0,0,W,H);
   cxArriba.clearRect(0,0,W,H);
 
-  /* tinte sangre de fondo con los graves */
   if(suaveG > 0.1){
-    cx.fillStyle = `rgba(90,14,28,${suaveG*0.025})`;
+    cx.fillStyle = `rgba(90,14,28,${suaveG*0.035})`;
     cx.fillRect(0,0,W,H);
   }
 
-  /* pulso del cover */
   const escala = 1 + pulso*0.04 + suaveG*0.02;
   altar.style.transform = `translate(-50%,-50%) scale(${escala})`;
   altar.style.filter = `contrast(${1.05+pulso*0.1}) saturate(${0.9+suaveK*0.3}) brightness(${1+pulso*0.15})`;
-  halo.style.transform = `translate(-50%,-50%) scale(${1 + pulso*0.15 + suaveG*0.08})`;
-  halo.style.opacity = 0.7 + suaveG*0.3 + pulso*0.2;
+  halo.style.transform = `translate(-50%,-50%) scale(${1 + pulso*0.18 + suaveG*0.1})`;
+  halo.style.opacity = 0.75 + suaveG*0.3 + pulso*0.2;
 
-  /* dibujar partículas de humo */
   const dibujarParticulas = (arr, contexto)=>{
     for(let i=arr.length-1;i>=0;i--){
       const p = arr[i];
       p.x += p.vx*(1+suaveK*0.3);
       p.y += p.vy*(1+suaveK*0.3);
-      // pequeña gravedad hacia arriba (humo sube)
-      p.vy -= 0.008;
-      // fricción
+      p.vy -= 0.01;
       p.vx *= 0.985; p.vy *= 0.985;
-      p.vida -= 0.003;
+      p.vida -= 0.0025;
 
-      if(p.vida <= 0 || p.x < -200 || p.x > W+200 || p.y < -300){
+      if(p.vida <= 0 || p.x < -300 || p.x > W+300 || p.y < -400){
         arr[i] = nuevaParticula(p.esFrente);
         continue;
       }
 
-      const radioEfectivo = p.r * (1 + suaveG*0.5 + pulso*0.3);
-      const opacidad = p.vida * (0.18 + suaveM*0.12 + pulso*0.08);
+      const radioEfectivo = p.r * (1 + suaveG*0.6 + pulso*0.35);
+      const opacidad = p.vida * (0.22 + suaveM*0.14 + pulso*0.1);
 
       const grad = contexto.createRadialGradient(p.x, p.y, 0, p.x, p.y, radioEfectivo);
-      grad.addColorStop(0, `hsla(${p.tono} ${p.sat}% ${p.lum + pulso*15}% / ${opacidad})`);
+      grad.addColorStop(0, `hsla(${p.tono} ${p.sat}% ${p.lum + pulso*18}% / ${opacidad})`);
       grad.addColorStop(0.5, `hsla(${p.tono-5} ${p.sat-15}% ${p.lum*0.7}% / ${opacidad*0.5})`);
       grad.addColorStop(1, `hsla(${p.tono} 50% 5% / 0)`);
       contexto.fillStyle = grad;
@@ -404,15 +488,14 @@ function dibujar(){
   dibujarParticulas(particulasFondo, cx);
   dibujarParticulas(particulasFrente, cxArriba);
 
-  /* manchas — salpicaduras suaves que se disipan en humo */
   for(let i=manchas.length-1;i>=0;i--){
     const m = manchas[i];
-    m.edad += 0.012;
+    m.edad += 0.01;
     if(m.edad > 1){ manchas.splice(i,1); continue; }
-    const rad = m.r * (1 + m.edad*2) * DPR;
+    const rad = m.r * (1 + m.edad*2.5) * DPR;
     const op = m.op * (1 - m.edad);
     const grad = cxArriba.createRadialGradient(m.x, m.y, 0, m.x, m.y, rad);
-    grad.addColorStop(0, `hsla(355 80% 35% / ${op})`);
+    grad.addColorStop(0, `hsla(355 80% 38% / ${op})`);
     grad.addColorStop(0.4, `hsla(350 65% 22% / ${op*0.6})`);
     grad.addColorStop(1, 'hsla(350 50% 8% / 0)');
     cxArriba.fillStyle = grad;
@@ -421,13 +504,12 @@ function dibujar(){
     cxArriba.fill();
   }
 
-  /* estela del cursor */
   if(raton.activo){
     const vel = Math.hypot(raton.vx, raton.vy);
     if(vel > 1){
-      const radEst = (12 + vel*0.6)*DPR;
+      const radEst = (14 + vel*0.7)*DPR;
       const grad = cxArriba.createRadialGradient(raton.x, raton.y, 0, raton.x, raton.y, radEst);
-      grad.addColorStop(0, `hsla(355 85% 50% / ${Math.min(0.5, vel/50)})`);
+      grad.addColorStop(0, `hsla(355 85% 50% / ${Math.min(0.55, vel/50)})`);
       grad.addColorStop(1, 'hsla(355 70% 20% / 0)');
       cxArriba.fillStyle = grad;
       cxArriba.beginPath();
@@ -440,7 +522,7 @@ function dibujar(){
 dibujar();
 
 /* ---------- CONTROLES ---------- */
-document.getElementById('btn').addEventListener('click', ()=>{
+function entrar(){
   arrancarAudio();
   document.getElementById('portada').classList.add('fuera');
   document.getElementById('hud').classList.add('dentro');
@@ -450,9 +532,13 @@ document.getElementById('btn').addEventListener('click', ()=>{
     document.getElementById('pista-nota').classList.add('aparece');
     setTimeout(()=>{
       document.getElementById('pista-nota').classList.remove('aparece');
-    }, 5000);
+    }, 5500);
   }, 2000);
-});
+}
+
+const btn = document.getElementById('btn');
+btn.addEventListener('click', entrar);
+btn.addEventListener('touchend', e=>{e.preventDefault(); entrar();}, {passive:false});
 
 document.getElementById('vol').addEventListener('input', e=>{
   if(ganancia) ganancia.gain.value = parseFloat(e.target.value);
