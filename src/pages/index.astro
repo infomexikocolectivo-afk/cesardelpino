@@ -1728,7 +1728,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 @media (min-width: 1024px) {
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+    grid-template-columns: minmax(0, 62fr) minmax(0, 38fr);
     grid-template-rows: auto minmax(0, 1fr) auto;
     column-gap: clamp(48px, 6vw, 96px);
     min-height: 100svh;
@@ -1768,10 +1768,31 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   .hero-manifesto,
   .rotator-prefix,
   .rotator-track {
-    font-size: clamp(40px, 4.6vw, 72px);
+    font-size: clamp(38px, 4vw, 60px);
   }
 
-  .hero-manifesto { margin-bottom: 12px; }
+  .hero-manifesto {
+    margin-bottom: 12px;
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .sentence.s-thin { font-weight: 400; }
+
+  .hero-manifesto b,
+  .rotator-prefix b {
+    font-weight: 400;
+  }
+
+  .hero-manifesto .name-gold {
+    color: inherit;
+    font-weight: 400;
+  }
+
+  .rotator-prefix {
+    font-weight: 400;
+    line-height: 1.08;
+  }
 
   .hero-rotator { margin-bottom: 24px; }
 
