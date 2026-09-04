@@ -141,6 +141,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
         <p class="section-intro">
           Llevo <span class="year-counter" aria-label="12"><span class="ynum-spacer">12</span><span class="ynum" style="--y:0">9</span><span class="ynum" style="--y:1">10</span><span class="ynum" style="--y:2">11</span><span class="ynum" style="--y:3">12</span></span> años en formatos donde el sonido construye sentido. Esta es una selección curada de proyectos verificables.
         </p>
+        <p class="section-hint">Haz clic en + para ver los proyectos de cada categoría</p>
       </div>
     </div>
 
@@ -1077,6 +1078,16 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   font-variation-settings: "opsz" 36;
 }
 
+.section-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 20px;
+}
+
 /* ACCORDION */
 .service-accordion {
   border-top: 1px solid var(--border-line);
@@ -1115,9 +1126,14 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   font-size: 1.2rem;
   font-weight: 300;
   color: var(--accent-blood);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   display: inline-block;
   flex-shrink: 0;
+  transform-origin: center;
+}
+
+.service-accordion:not([open]) .service-accordion__title:hover .service-accordion__icon {
+  transform: rotate(90deg);
 }
 
 .service-accordion[open] .service-accordion__icon {
@@ -1134,9 +1150,24 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes accordion-icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+.works-grid .service-accordion.revealed .service-accordion__icon {
+  animation: accordion-icon-pulse 600ms ease-out;
+}
+
+.works-grid .service-accordion:nth-child(1).revealed .service-accordion__icon { animation-delay: 0ms; }
+.works-grid .service-accordion:nth-child(2).revealed .service-accordion__icon { animation-delay: 100ms; }
+.works-grid .service-accordion:nth-child(3).revealed .service-accordion__icon { animation-delay: 200ms; }
+.works-grid .service-accordion:nth-child(4).revealed .service-accordion__icon { animation-delay: 300ms; }
+
 @media (prefers-reduced-motion: reduce) {
   .service-accordion__icon { transition: none; }
   .service-accordion__content { animation: none; }
+  .works-grid .service-accordion.revealed .service-accordion__icon { animation: none; }
 }
 
 /* WORKS */
