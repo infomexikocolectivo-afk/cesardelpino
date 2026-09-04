@@ -7,8 +7,24 @@ export interface Props {
 const { lang = 'es', currentPath = '/' } = Astro.props;
 
 const labels = {
-  es: { obra: 'Obra', estudio: 'Estudio', ome: 'Ōme' },
-  en: { obra: 'Works', estudio: 'Studio', ome: 'Ōme' },
+  es: {
+    obra: 'Obra',
+    estudio: 'Estudio',
+    discografia: 'Discografía',
+    ome: 'Ōme',
+    bitacora: 'Bitácora',
+    shop: 'Shop',
+    contrataciones: 'Contrataciones',
+  },
+  en: {
+    obra: 'Works',
+    estudio: 'Studio',
+    discografia: 'Discography',
+    ome: 'Ōme',
+    bitacora: 'Journal',
+    shop: 'Shop',
+    contrataciones: 'Booking',
+  },
 };
 
 const t = labels[lang];
@@ -22,7 +38,11 @@ const langPrefix = lang === 'en' ? '/en' : '';
     <ul class="main-nav">
       <li><a href={`${langPrefix}/#works`}>{t.obra}</a></li>
       <li><a href={`${langPrefix}/#studio`}>{t.estudio}</a></li>
+      <li><a href={`${langPrefix}/#discografia`}>{t.discografia}</a></li>
       <li><a href={`${langPrefix}/#ome`}>{t.ome}</a></li>
+      <li><a href={`${langPrefix}/#bitacora`}>{t.bitacora}</a></li>
+      <li><a href="#">{t.shop}</a></li>
+      <li><a href="#">{t.contrataciones}</a></li>
     </ul>
     <div class="lang-toggle">
       <a href={currentPath.replace('/en', '') || '/'} class={lang === 'es' ? 'active' : ''}>ES</a>
@@ -55,9 +75,33 @@ const langPrefix = lang === 'en' ? '/en' : '';
         </a>
       </li>
       <li style="--i:2">
+        <a href={`${langPrefix}/#discografia`} class="mobile-link">
+          <span class="link-name">{t.discografia}</span>
+          <span class="link-num">03</span>
+        </a>
+      </li>
+      <li style="--i:3">
         <a href={`${langPrefix}/#ome`} class="mobile-link">
           <span class="link-name">{t.ome}</span>
-          <span class="link-num">03</span>
+          <span class="link-num">04</span>
+        </a>
+      </li>
+      <li style="--i:4">
+        <a href={`${langPrefix}/#bitacora`} class="mobile-link">
+          <span class="link-name">{t.bitacora}</span>
+          <span class="link-num">05</span>
+        </a>
+      </li>
+      <li style="--i:5">
+        <a href="#" class="mobile-link">
+          <span class="link-name">{t.shop}</span>
+          <span class="link-num">06</span>
+        </a>
+      </li>
+      <li style="--i:6">
+        <a href="#" class="mobile-link">
+          <span class="link-name">{t.contrataciones}</span>
+          <span class="link-num">07</span>
         </a>
       </li>
     </ul>
@@ -121,7 +165,7 @@ const langPrefix = lang === 'en' ? '/en' : '';
   .main-nav {
     display: flex;
     list-style: none;
-    gap: 36px;
+    gap: 24px;
   }
 
   .main-nav a {
@@ -265,7 +309,7 @@ const langPrefix = lang === 'en' ? '/en' : '';
 
   .link-name {
     font-family: var(--font-display);
-    font-size: 42px;
+    font-size: clamp(30px, 8vw, 42px);
     font-weight: 300;
     letter-spacing: -0.025em;
     line-height: 1;
@@ -318,7 +362,7 @@ const langPrefix = lang === 'en' ? '/en' : '';
   }
 
   /* RESPONSIVE */
-  @media (max-width: 900px) {
+  @media (max-width: 1023px) {
     .site-header { padding: 0 20px; }
     .nav-cluster { display: none; }
     .mobile-toggle { display: flex; }
