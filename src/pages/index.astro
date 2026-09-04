@@ -154,7 +154,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
             <span class="service-accordion__label work-cat"><span class="num">01</span> Score</span>
             <h3 class="work-title">Composición para cine y broadcast</h3>
           </div>
-          <span class="service-accordion__icon" aria-hidden="true">+</span>
+          <span class="service-accordion__icon" aria-hidden="true"><span class="service-accordion__icon-inner">+</span></span>
         </summary>
         <div class="service-accordion__content">
           <ul class="work-list">
@@ -212,7 +212,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
             <span class="service-accordion__label work-cat"><span class="num">02</span> Sound Design</span>
             <h3 class="work-title">Identidad sonora institucional &amp; de marca</h3>
           </div>
-          <span class="service-accordion__icon" aria-hidden="true">+</span>
+          <span class="service-accordion__icon" aria-hidden="true"><span class="service-accordion__icon-inner">+</span></span>
         </summary>
         <div class="service-accordion__content">
           <ul class="work-list">
@@ -262,7 +262,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
             <span class="service-accordion__label work-cat"><span class="num">03</span> Studio &amp; Live</span>
             <h3 class="work-title">Diseño técnico, museo y performance</h3>
           </div>
-          <span class="service-accordion__icon" aria-hidden="true">+</span>
+          <span class="service-accordion__icon" aria-hidden="true"><span class="service-accordion__icon-inner">+</span></span>
         </summary>
         <div class="service-accordion__content">
           <ul class="work-list">
@@ -336,7 +336,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
             <span class="service-accordion__label work-cat"><span class="num">04</span> Club &amp; Festival</span>
             <h3 class="work-title">Clubes, festivales y escenarios</h3>
           </div>
-          <span class="service-accordion__icon" aria-hidden="true">+</span>
+          <span class="service-accordion__icon" aria-hidden="true"><span class="service-accordion__icon-inner">+</span></span>
         </summary>
         <div class="service-accordion__content">
           <ul class="work-list">
@@ -1150,24 +1150,42 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Pulse loop: 700ms de pulso (0→1.35→1) + 2500ms de pausa = 3200ms total.
+   700 / 3200 ≈ 21.9% de la timeline para el pulso, resto plano. */
 @keyframes accordion-icon-pulse {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.15); }
+  0%     { transform: scale(1);    opacity: 1; }
+  11%    { transform: scale(1.35); opacity: 1; }
+  22%    { transform: scale(1);    opacity: 1; }
+  100%   { transform: scale(1);    opacity: 1; }
 }
 
-.works-grid .service-accordion.revealed .service-accordion__icon {
-  animation: accordion-icon-pulse 600ms ease-out;
+/* El pulso vive en el span interno para no colisionar con el transform:rotate
+   del outer (que maneja hover 90deg y open 45deg). */
+.service-accordion__icon-inner {
+  display: inline-block;
+  transform-origin: center;
 }
 
-.works-grid .service-accordion:nth-child(1).revealed .service-accordion__icon { animation-delay: 0ms; }
-.works-grid .service-accordion:nth-child(2).revealed .service-accordion__icon { animation-delay: 100ms; }
-.works-grid .service-accordion:nth-child(3).revealed .service-accordion__icon { animation-delay: 200ms; }
-.works-grid .service-accordion:nth-child(4).revealed .service-accordion__icon { animation-delay: 300ms; }
+.works-grid .service-accordion .service-accordion__icon-inner {
+  animation: accordion-icon-pulse 3200ms ease-out infinite;
+}
+
+.works-grid .service-accordion:nth-child(1) .service-accordion__icon-inner { animation-delay: 0ms; }
+.works-grid .service-accordion:nth-child(2) .service-accordion__icon-inner { animation-delay: 150ms; }
+.works-grid .service-accordion:nth-child(3) .service-accordion__icon-inner { animation-delay: 300ms; }
+.works-grid .service-accordion:nth-child(4) .service-accordion__icon-inner { animation-delay: 450ms; }
+
+/* Detener el pulso permanentemente cuando el usuario ya abrió el acordeón.
+   .was-opened lo añade JS en el primer toggle; se mantiene aunque se cierre. */
+.works-grid .service-accordion.was-opened .service-accordion__icon-inner,
+.works-grid .service-accordion[open] .service-accordion__icon-inner {
+  animation: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .service-accordion__icon { transition: none; }
   .service-accordion__content { animation: none; }
-  .works-grid .service-accordion.revealed .service-accordion__icon { animation: none; }
+  .works-grid .service-accordion .service-accordion__icon-inner { animation: none; }
 }
 
 /* WORKS */
@@ -1948,3 +1966,11 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   .scroll-hint { display: none; }
 }
 </style>
+
+<script>
+  // Detiene el pulso del + en cuanto el usuario abre un acordeón de Obra.
+  // La clase queda pegada aunque luego cierre el details.
+  document.querySelectorAll('.works-grid .service-accordion').forEach((el) => {
+    el.addEventListener('toggle', () => el.classList.add('was-opened'), { once: true });
+  });
+</script>
