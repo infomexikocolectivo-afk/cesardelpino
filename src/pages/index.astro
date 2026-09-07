@@ -441,68 +441,106 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   </div>
 </section>
 
-<!-- STUDIO / SERVICES -->
-<section class="section section-studio" id="studio">
+<!-- DIAGNÓSTICO SONORO -->
+<section class="section section-diagnostico" id="diagnostico">
   <div class="section-inner">
     <div class="section-header reveal">
-      <div class="section-number"><span class="num">02</span> &nbsp;&nbsp; Estudio</div>
+      <div class="section-number"><span class="num">02</span> &nbsp;&nbsp; Diagnóstico</div>
       <div class="section-title-wrap">
-        <h2 class="section-title">Cinco prácticas. <b>Una <em>misma</em> escucha.</b></h2>
+        <h2 class="section-title">¿Tu proyecto necesita sonido? <b>Te digo <em>qué</em> le hace falta.</b></h2>
         <p class="section-intro">
-          Cada práctica es un modo distinto de trabajar el sonido. Eligen una, o conversamos para encontrar la combinación que su proyecto pide.
+          Tres preguntas, treinta segundos. Sin registro, sin correo.
         </p>
       </div>
     </div>
 
-    <div class="studio-list">
-      <a href="/servicios/diseno-sonoro/" class="studio-item reveal">
-        <div class="studio-num">01</div>
-        <div class="studio-name">Diseño <em>sonoro</em></div>
-        <div class="studio-info">
-          <div class="studio-desc">Identidad sonora para marcas, narrativas audiovisuales y experiencias inmersivas.</div>
-          <div class="studio-credit">JÄGERMEISTER · INEGI · SENADO DE LA REPÚBLICA</div>
-        </div>
-        <div class="studio-arrow">↗</div>
-      </a>
+    <div class="diag reveal" data-diag>
+      <ol class="diag-log" data-diag-log aria-live="polite"></ol>
 
-      <a href="/servicios/produccion-musical/" class="studio-item reveal">
-        <div class="studio-num">02</div>
-        <div class="studio-name">Producción <em>musical</em></div>
-        <div class="studio-info">
-          <div class="studio-desc">De la idea al máster. Acompañamiento integral en arreglo, grabación, programación.</div>
-          <div class="studio-credit">7 SELLOS INTERNACIONALES · 1M+ REPRODUCCIONES</div>
+      <div class="diag-flow" data-diag-flow>
+        <div class="diag-step is-active" data-step="1">
+          <div class="diag-step-meta"><span class="diag-step-index">Paso 01 / 03</span></div>
+          <h3 class="diag-question">¿Qué estás haciendo?</h3>
+          <div class="diag-options">
+            <button type="button" class="diag-option" data-value="cine" data-label="Una película o documental">
+              <span class="diag-option-num">01</span>
+              <span class="diag-option-text">Una película o documental</span>
+            </button>
+            <button type="button" class="diag-option" data-value="marca" data-label="Una marca o campaña">
+              <span class="diag-option-num">02</span>
+              <span class="diag-option-text">Una marca o campaña</span>
+            </button>
+            <button type="button" class="diag-option" data-value="espacio" data-label="Un espacio o instalación">
+              <span class="diag-option-num">03</span>
+              <span class="diag-option-text">Un espacio o instalación</span>
+            </button>
+            <button type="button" class="diag-option" data-value="evento" data-label="Un evento o experiencia">
+              <span class="diag-option-num">04</span>
+              <span class="diag-option-text">Un evento o experiencia</span>
+            </button>
+            <button type="button" class="diag-option" data-value="disco" data-label="Un disco o track">
+              <span class="diag-option-num">05</span>
+              <span class="diag-option-text">Un disco o track</span>
+            </button>
+          </div>
         </div>
-        <div class="studio-arrow">↗</div>
-      </a>
 
-      <a href="/servicios/mix-mastering/" class="studio-item reveal">
-        <div class="studio-num">03</div>
-        <div class="studio-name">Mix &amp; <em>Mastering</em></div>
-        <div class="studio-info">
-          <div class="studio-desc">Mezcla profesional y mastering analógico-híbrido. Listo para club, streaming, vinilo, cine.</div>
-          <div class="studio-credit">FORMACIÓN: MICHAEL BRAUER · JAYCEN JOSHUA</div>
+        <div class="diag-step" data-step="2" hidden>
+          <div class="diag-step-meta"><span class="diag-step-index">Paso 02 / 03</span></div>
+          <h3 class="diag-question">¿En qué punto estás?</h3>
+          <div class="diag-options">
+            <button type="button" class="diag-option" data-value="idea" data-label="Todavía es una idea">
+              <span class="diag-option-num">01</span>
+              <span class="diag-option-text">Todavía es una idea</span>
+            </button>
+            <button type="button" class="diag-option" data-value="proceso" data-label="Está en proceso">
+              <span class="diag-option-num">02</span>
+              <span class="diag-option-text">Está en proceso</span>
+            </button>
+            <button type="button" class="diag-option" data-value="grabado" data-label="Ya está grabado, falta terminarlo">
+              <span class="diag-option-num">03</span>
+              <span class="diag-option-text">Ya está grabado, falta terminarlo</span>
+            </button>
+            <button type="button" class="diag-option" data-value="listo" data-label="Está terminado pero no suena bien">
+              <span class="diag-option-num">04</span>
+              <span class="diag-option-text">Está terminado pero no suena bien</span>
+            </button>
+          </div>
         </div>
-        <div class="studio-arrow">↗</div>
-      </a>
 
-      <a href="/servicios/musica-original/" class="studio-item reveal">
-        <div class="studio-num">04</div>
-        <div class="studio-name">Música <em>original</em></div>
-        <div class="studio-info">
-          <div class="studio-desc">Composición a medida para cine, publicidad, instalaciones, proyectos editoriales.</div>
-          <div class="studio-credit">NETFLIX · CIRQUE DU SOLEIL · MURO</div>
+        <div class="diag-step" data-step="3" hidden>
+          <div class="diag-step-meta"><span class="diag-step-index">Paso 03 / 03</span></div>
+          <h3 class="diag-question">¿Qué te preocupa más?</h3>
+          <div class="diag-options">
+            <button type="button" class="diag-option" data-value="transmitir" data-label="Que no transmita lo que quiero">
+              <span class="diag-option-num">01</span>
+              <span class="diag-option-text">Que no transmita lo que quiero</span>
+            </button>
+            <button type="button" class="diag-option" data-value="empezar" data-label="No sé por dónde empezar">
+              <span class="diag-option-num">02</span>
+              <span class="diag-option-text">No sé por dónde empezar</span>
+            </button>
+            <button type="button" class="diag-option" data-value="tiempo" data-label="Los tiempos de entrega">
+              <span class="diag-option-num">03</span>
+              <span class="diag-option-text">Los tiempos de entrega</span>
+            </button>
+            <button type="button" class="diag-option" data-value="nivel" data-label="Que no llegue a nivel profesional">
+              <span class="diag-option-num">04</span>
+              <span class="diag-option-text">Que no llegue a nivel profesional</span>
+            </button>
+          </div>
         </div>
-        <div class="studio-arrow">↗</div>
-      </a>
 
-      <a href="/servicios/ome-dj/" class="studio-item reveal">
-        <div class="studio-num">05</div>
-        <div class="studio-name">Ōme <em>— DJ &amp; Live</em></div>
-        <div class="studio-info">
-          <div class="studio-desc">Sets ceremoniales para eventos curados, festivales y experiencias rituales.</div>
+        <div class="diag-result" data-diag-result hidden>
+          <div class="diag-step-meta"><span class="diag-step-index">Diagnóstico</span></div>
+          <h3 class="diag-result-title" data-diag-title></h3>
+          <p class="diag-result-body" data-diag-body></p>
+          <div class="diag-actions">
+            <a href="#" class="diag-cta">Hablemos de tu proyecto <span aria-hidden="true">→</span></a>
+            <button type="button" class="diag-reset" data-diag-reset>Empezar de nuevo</button>
+          </div>
         </div>
-        <div class="studio-arrow">↗</div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1320,191 +1358,235 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 .work-cv-link .arrow { transition: transform 0.3s ease; }
 .work-cv-link:hover .arrow { transform: translateX(4px); }
 
-/* STUDIO */
-.section-studio {
+/* DIAGNÓSTICO SONORO */
+.section-diagnostico {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-line);
   border-bottom: 1px solid var(--border-line);
 }
 
-.studio-list { border-top: 1px solid var(--text-primary); }
+.diag {
+  max-width: 900px;
+  margin-top: 60px;
+}
 
-.studio-item {
+.diag-log {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--text-primary);
+}
+
+.diag-log:empty { border-top: none; }
+
+.diag-log-row {
   display: grid;
-  grid-template-columns: 80px 1fr 240px 80px;
-  gap: 40px;
-  padding: 36px 0;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  padding: 18px 0;
   border-bottom: 1px solid var(--border-line);
   align-items: baseline;
-  cursor: pointer;
-  transition: padding 0.3s ease;
+  animation: diag-fade-in 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.studio-item:hover { padding-left: 16px; }
-.studio-item:hover .studio-name { color: var(--accent-blood); }
-.studio-item:hover .studio-arrow {
-  transform: translateX(8px);
-  color: var(--accent-blood);
-}
-
-.studio-num {
+.diag-log-q {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--text-muted);
   font-weight: 500;
 }
 
-.studio-name {
+.diag-log-a {
   font-family: var(--font-display);
-  font-size: 36px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.25;
   letter-spacing: -0.015em;
   color: var(--text-primary);
   font-variation-settings: "opsz" 36, "SOFT" 30;
-  transition: color 0.3s ease;
+  text-align: right;
 }
 
-.studio-name em { font-style: italic; color: var(--accent-gold); }
+.diag-log:not(:empty) + .diag-flow { margin-top: 48px; }
 
-.studio-info {
-  max-width: 240px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.diag-step,
+.diag-result {
+  animation: diag-fade-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.studio-desc {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.55;
-}
+.diag-step[hidden],
+.diag-result[hidden] { display: none; }
 
-.studio-credit {
+.diag-step-meta { margin-bottom: 20px; }
+
+.diag-step-index {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  line-height: 1.6;
-  opacity: 0.4;
+  color: var(--accent-blood);
+  font-weight: 500;
 }
 
-.studio-arrow {
-  font-family: var(--font-mono);
-  font-size: 18px;
+.diag-question {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
-  text-align: right;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+  margin: 0 0 40px;
+}
+
+.diag-options {
+  display: grid;
+  gap: 12px;
+}
+
+.diag-option {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 20px;
+  align-items: baseline;
+  padding: 20px 24px;
+  background: transparent;
+  border: 1px solid var(--border-line);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 250ms ease, background-color 250ms ease, transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diag-option:hover,
+.diag-option:focus-visible {
+  border-color: var(--text-primary);
+  background: rgba(26, 24, 20, 0.03);
+  outline: none;
+  transform: translateX(4px);
+}
+
+.diag-option-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.diag-option-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+}
+
+.diag-result-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+  margin: 0 0 24px;
+  max-width: 780px;
+}
+
+.diag-result-body {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-primary);
+  max-width: 680px;
+  font-variation-settings: "opsz" 36;
+  margin: 0 0 40px;
+}
+
+.diag-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.diag-cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 16px 24px;
+  border: 1px solid var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+.diag-cta:hover,
+.diag-cta:focus-visible {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  outline: none;
+}
+
+.diag-cta span {
   display: inline-block;
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- STUDIO: interacción desktop (>= 1024px) --- */
-@media (min-width: 1024px) {
-  .studio-item {
-    position: relative;
-    grid-template-columns: 1fr 300px 80px;
-    padding: 36px 0 36px 120px;
-    transition: padding 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .studio-item:hover {
-    padding-top: 72px;
-    padding-bottom: 72px;
-    padding-left: 120px;
-  }
-
-  .studio-item::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    height: 1px;
-    background: var(--accent-blood);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-  .studio-item:hover::after { transform: scaleX(1); }
-
-  .studio-num {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--font-display);
-    font-size: clamp(48px, 4vw, 72px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: rgba(26, 24, 20, 0.12);
-    font-variation-settings: "opsz" 96, "SOFT" 30;
-    transition: color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-  }
-  .studio-item:hover .studio-num {
-    color: rgba(26, 24, 20, 0.30);
-  }
-
-  .studio-info {
-    max-width: 300px;
-  }
-
-  .studio-name {
-    transition: color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .studio-desc {
-    transition: font-size 400ms cubic-bezier(0.16, 1, 0.3, 1), color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .studio-item:hover .studio-desc {
-    font-size: 15px;
-    color: var(--text-primary);
-  }
-
-  .studio-credit {
-    transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .studio-item:hover .studio-credit {
-    opacity: 1;
-  }
-
-  .studio-arrow {
-    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .studio-item:hover .studio-arrow {
-    transform: translate(8px, -8px);
-    color: var(--accent-blood);
-  }
+.diag-cta:hover span,
+.diag-cta:focus-visible span {
+  transform: translateX(4px);
 }
 
-@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
-  .studio-item {
-    transition: none;
+.diag-reset {
+  background: none;
+  border: none;
+  padding: 16px 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 250ms ease;
+}
+
+.diag-reset:hover,
+.diag-reset:focus-visible {
+  color: var(--accent-blood);
+  outline: none;
+}
+
+@keyframes diag-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diag-step,
+  .diag-result,
+  .diag-log-row {
+    animation: none;
   }
-  .studio-item:hover {
-    padding: 36px 0 36px 120px;
+  .diag-option {
+    transition-property: border-color, background-color;
   }
-  .studio-item::after {
-    display: none;
-  }
-  .studio-item:hover .studio-arrow {
+  .diag-option:hover,
+  .diag-option:focus-visible {
     transform: none;
   }
-  .studio-item:hover .studio-desc {
-    font-size: 13px;
-  }
-  .studio-num,
-  .studio-credit,
-  .studio-desc,
-  .studio-name,
-  .studio-arrow {
-    transition-property: opacity, color;
-    transition-duration: 300ms;
-  }
+  .diag-cta span { transition: none; }
 }
 
 /* OME */
@@ -1898,8 +1980,6 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   .works-grid { grid-template-columns: 1fr; }
   .work-block { border-right: none; border-bottom: 1px solid var(--border-line); min-height: auto; }
   .bitacora-link:hover { padding-left: 0; }
-  .studio-item { grid-template-columns: 60px 1fr 60px; }
-  .studio-info { display: none; }
 }
 
 /* Scroll hint */
@@ -1977,39 +2057,31 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   /* Section headers */
   .section-header { grid-template-columns: 1fr; gap: 24px; }
 
-  /* Studio: show description on mobile */
-  .studio-item {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 2px 16px;
-    padding: 20px 0;
-    align-items: start;
+  /* Diagnóstico mobile */
+  .diag { margin-top: 32px; }
+  .diag-log-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 14px 0;
   }
-  .studio-num { display: none; }
-  .studio-name {
-    font-size: 26px;
-    grid-column: 1;
-    grid-row: 1;
+  .diag-log-a { text-align: left; font-size: 18px; }
+  .diag-question { margin-bottom: 28px; }
+  .diag-option {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 20px;
   }
-  .studio-info {
-    display: block;
-    grid-column: 1;
-    grid-row: 2;
-    max-width: none;
-    margin-top: 4px;
+  .diag-option-text { font-size: 18px; }
+  .diag-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
-  .studio-desc {
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.5;
+  .diag-cta {
+    justify-content: space-between;
+    width: 100%;
   }
-  .studio-credit { display: none; }
-  .studio-arrow {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: center;
-    font-size: 15px;
-  }
+  .diag-reset { text-align: left; }
 
   /* Releases */
   .release-row { grid-template-columns: 28px 1fr 36px 40px; gap: 8px; padding: 16px 0; }
@@ -2126,4 +2198,176 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   document.querySelectorAll('.works-grid .service-accordion').forEach((el) => {
     el.addEventListener('toggle', () => el.classList.add('was-opened'), { once: true });
   });
+
+  // --- Diagnóstico sonoro: flujo de 3 pasos ---
+  const diag = document.querySelector('[data-diag]');
+  if (diag) {
+    const log = diag.querySelector('[data-diag-log]');
+    const steps = Array.from(diag.querySelectorAll('.diag-step'));
+    const resultBox = diag.querySelector('[data-diag-result]');
+    const resultTitle = diag.querySelector('[data-diag-title]');
+    const resultBody = diag.querySelector('[data-diag-body]');
+
+    const questions = {
+      1: '¿Qué estás haciendo?',
+      2: '¿En qué punto estás?',
+      3: '¿Qué te preocupa más?',
+    };
+
+    const answers = { 1: null, 2: null, 3: null };
+
+    const results = {
+      cine_idea: {
+        title: 'El sonido se decide antes de rodar',
+        body: 'Casi todos los proyectos llegan cuando ya está filmado. Para entonces las decisiones sonoras importantes ya se tomaron, solo que nadie las tomó a propósito. Estás en el único momento donde puede definirse si el sonido acompaña la imagen o si la conduce. Esa pregunta cambia el presupuesto, el rodaje y el montaje.',
+      },
+      cine_proceso: {
+        title: 'Escribir con la imagen, no encima de ella',
+        body: 'Mientras el montaje siga abierto, la música puede construirse en diálogo con el corte en lugar de rellenarlo. Lo que conviene fijar ahora no son temas, sino un lenguaje: qué instrumentos existen en este mundo, qué silencios lo definen, qué no va a sonar nunca. Después esas decisiones cuestan tres veces más.',
+      },
+      cine_grabado: {
+        title: 'Antes de componer, un mapa',
+        body: 'Con el material cerrado el trabajo deja de ser creativo y se vuelve arquitectónico: distinguir qué necesita composición, qué necesita diseño y qué solo necesita limpieza. Confundir esas tres capas es el error más caro de la posproducción. Lo primero no es escribir música: es entender qué pide cada escena.',
+      },
+      cine_listo: {
+        title: 'Suena bien y aun así no funciona',
+        body: 'Cuando una pieza terminada no convence, casi nunca es la mezcla. Es que el sonido nunca recibió una intención narrativa y se quedó en decorado. Retocar niveles no lo arregla. Vale la pena una escucha estructural antes de gastar en ajustes que atacan el síntoma.',
+      },
+      marca_idea: {
+        title: 'Una marca suena, la decida o no',
+        body: 'Toda marca ya tiene sonido: el de sus videos, sus espacios, su espera telefónica. La diferencia entre tener identidad sonora y no tenerla no es la existencia del sonido, es si alguien lo decidió. Empezar desde la idea permite construir un sistema reconocible en vez de acumular piezas sueltas.',
+      },
+      marca_proceso: {
+        title: 'El sonido llega tarde por costumbre',
+        body: 'La identidad visual se aprueba y solo entonces alguien pregunta cómo suena. Ese orden convierte al sonido en parche. Si el sistema visual está tomando forma, este es el momento de traducirlo: qué textura corresponde a esa tipografía, qué ritmo a ese uso del espacio.',
+      },
+      marca_grabado: {
+        title: 'Tener piezas no es tener sistema',
+        body: 'Un archivo de audios no es identidad sonora. La prueba es simple: si alguien escucha dos de tus piezas sin ver el logo, ¿reconoce que son de la misma marca? Si la respuesta es no, lo que falta no es más material sino una lógica que lo articule.',
+      },
+      marca_listo: {
+        title: 'Revisar la distancia entre lo que dices y lo que suenas',
+        body: 'Cuando el material existe pero incomoda, suele haber una contradicción: la marca habla de calidez y suena sintética, dice artesanal y suena industrial. Eso no se arregla mezclando. Se arregla identificando dónde se abrió la brecha entre el discurso y el timbre.',
+      },
+      espacio_idea: {
+        title: 'El lugar ya está sonando',
+        body: 'Ningún espacio está en silencio. Tiene su acústica, su maquinaria, su ruido de fondo, sus rutas de tránsito. El trabajo empieza escuchando lo que ya hay, no imaginando lo que se va a poner. Muchas instalaciones fallan porque añadieron sonido a un lugar que nunca escucharon.',
+      },
+      espacio_proceso: {
+        title: 'Lo que se quita pesa tanto como lo que se pone',
+        body: 'En espacio, la intervención sonora más efectiva a veces es sustractiva: tratar una reverberación, apagar una fuente, redirigir un flujo. Antes de diseñar contenido conviene un levantamiento del sitio. Sin ese dato, cualquier propuesta es una apuesta.',
+      },
+      espacio_grabado: {
+        title: 'Lo que funciona en estudio no funciona en sala',
+        body: 'Un audio bien producido puede volverse ininteligible en un espacio con superficies duras o techos altos. La adaptación acústica es un trabajo distinto al de producción, y no es opcional. Se resuelve midiendo el lugar, no ajustando el archivo.',
+      },
+      espacio_listo: {
+        title: 'El problema probablemente no está en el audio',
+        body: 'Cuando una instalación no suena como debía, la causa suele estar en cómo el sonido se comporta en ese lugar: dónde están las bocinas, cómo rebota, dónde se para la gente. Revisar el archivo antes que el espacio es empezar por el lado equivocado.',
+      },
+      evento_idea: {
+        title: 'Curaduría no es selección de canciones',
+        body: 'Un evento que se recuerda tiene una dramaturgia sonora: cómo entra la gente, cuánto tarda en soltarse, cómo se despide. Definir eso antes de pensar en repertorio cambia por completo el resultado. La pregunta útil no es qué poner, sino qué debe pasarle a quien está ahí.',
+      },
+      evento_proceso: {
+        title: 'El arco importa más que el contenido',
+        body: 'Con las decisiones generales tomadas, lo que queda por diseñar es la curva: dónde se sostiene la energía, dónde se rompe, dónde hay descanso. Un evento sin arco se siente largo aunque dure poco. Uno con arco se siente corto aunque dure toda la noche.',
+      },
+      evento_grabado: {
+        title: 'Tener el material no es lo mismo que ejecutarlo',
+        body: 'El repertorio resuelto y el evento resuelto son cosas distintas. Lo que ocurre en vivo depende de leer a la gente, del espacio, de la hora. Esa capacidad de ajuste en tiempo real no se prepara de antemano: se ejerce en el momento.',
+      },
+      evento_listo: {
+        title: 'Casi siempre fue lectura, no material',
+        body: 'Cuando un evento no funcionó sonoramente, rara vez fue por mala música. Fue porque no se leyó bien el lugar, el público o el momento de la noche. Diagnosticar eso sirve más que cambiar el repertorio para la próxima.',
+      },
+      disco_idea: {
+        title: 'Definir el mundo antes de grabar',
+        body: 'Lo que más cuesta corregir después es una dirección sonora que nunca se definió. Antes de la primera toma vale decidir qué espacio habita esta música, qué le está permitido y qué queda fuera. Grabar sin esa definición es acumular material que después habrá que reconciliar.',
+      },
+      disco_proceso: {
+        title: 'Estás donde las decisiones aún son baratas',
+        body: 'En proceso, cualquier corrección cuesta horas. Terminado, cuesta semanas. Una escucha externa en este punto suele ahorrar meses: no para validar, sino para detectar lo que dejaste de oír por costumbre. Después de cierto número de repeticiones, uno ya no escucha su propio material.',
+      },
+      disco_grabado: {
+        title: 'Mezcla y máster no son lo mismo',
+        body: 'Se confunden constantemente. La mezcla resuelve el equilibrio interno de la pieza: qué se oye, cuánto y dónde. El máster prepara esa pieza para el mundo: formatos, sistemas, contexto. Un buen máster no arregla una mezcla mal resuelta. Saber cuál te falta es la primera decisión.',
+      },
+      disco_listo: {
+        title: 'El máster no salva lo que la mezcla no resolvió',
+        body: 'Cuando algo terminado no compite con lo que suena afuera, el impulso es masterizar más fuerte. Casi nunca funciona. El problema suele estar antes: decisiones de balance, de espacio, de arreglo. Vale identificar dónde está realmente el cuello antes de invertir en el último eslabón.',
+      },
+    };
+
+    function showStep(n) {
+      steps.forEach((s) => {
+        const isCurrent = Number(s.dataset.step) === n;
+        s.hidden = !isCurrent;
+        s.classList.toggle('is-active', isCurrent);
+      });
+      if (resultBox) resultBox.hidden = true;
+    }
+
+    function appendLog(stepN, label) {
+      if (!log) return;
+      const li = document.createElement('li');
+      li.className = 'diag-log-row';
+      const q = document.createElement('span');
+      q.className = 'diag-log-q';
+      q.textContent = questions[stepN];
+      const a = document.createElement('span');
+      a.className = 'diag-log-a';
+      a.textContent = label;
+      li.appendChild(q);
+      li.appendChild(a);
+      log.appendChild(li);
+    }
+
+    function showResult(key) {
+      const r = results[key];
+      if (!r || !resultBox) return;
+      if (resultTitle) resultTitle.textContent = r.title;
+      if (resultBody) resultBody.textContent = r.body;
+      steps.forEach((s) => {
+        s.hidden = true;
+        s.classList.remove('is-active');
+      });
+      resultBox.hidden = false;
+    }
+
+    function resetDiag() {
+      answers[1] = null;
+      answers[2] = null;
+      answers[3] = null;
+      if (log) log.innerHTML = '';
+      showStep(1);
+    }
+
+    diag.addEventListener('click', (e) => {
+      const target = e.target instanceof Element ? e.target : null;
+      if (!target) return;
+
+      const option = target.closest('.diag-option');
+      if (option) {
+        const stepEl = option.closest('.diag-step');
+        if (!stepEl) return;
+        const stepN = Number(stepEl.dataset.step);
+        const value = option.dataset.value;
+        const label = option.dataset.label || option.textContent?.trim() || '';
+        if (!value) return;
+        answers[stepN] = value;
+        appendLog(stepN, label);
+        if (stepN < 3) {
+          showStep(stepN + 1);
+        } else {
+          showResult(answers[1] + '_' + answers[2]);
+        }
+        return;
+      }
+
+      if (target.closest('[data-diag-reset]')) {
+        resetDiag();
+      }
+    });
+  }
 </script>
