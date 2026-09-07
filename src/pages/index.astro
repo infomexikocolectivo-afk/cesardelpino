@@ -458,35 +458,49 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
       <a href="/servicios/diseno-sonoro/" class="studio-item reveal">
         <div class="studio-num">01</div>
         <div class="studio-name">Diseño <em>sonoro</em></div>
-        <div class="studio-desc">Identidad sonora para marcas, narrativas audiovisuales y experiencias inmersivas.</div>
+        <div class="studio-info">
+          <div class="studio-desc">Identidad sonora para marcas, narrativas audiovisuales y experiencias inmersivas.</div>
+          <div class="studio-credit">JÄGERMEISTER · INEGI · SENADO DE LA REPÚBLICA</div>
+        </div>
         <div class="studio-arrow">↗</div>
       </a>
 
       <a href="/servicios/produccion-musical/" class="studio-item reveal">
         <div class="studio-num">02</div>
         <div class="studio-name">Producción <em>musical</em></div>
-        <div class="studio-desc">De la idea al máster. Acompañamiento integral en arreglo, grabación, programación.</div>
+        <div class="studio-info">
+          <div class="studio-desc">De la idea al máster. Acompañamiento integral en arreglo, grabación, programación.</div>
+          <div class="studio-credit">7 SELLOS INTERNACIONALES · 1M+ REPRODUCCIONES</div>
+        </div>
         <div class="studio-arrow">↗</div>
       </a>
 
       <a href="/servicios/mix-mastering/" class="studio-item reveal">
         <div class="studio-num">03</div>
         <div class="studio-name">Mix &amp; <em>Mastering</em></div>
-        <div class="studio-desc">Mezcla profesional y mastering analógico-híbrido. Listo para club, streaming, vinilo, cine.</div>
+        <div class="studio-info">
+          <div class="studio-desc">Mezcla profesional y mastering analógico-híbrido. Listo para club, streaming, vinilo, cine.</div>
+          <div class="studio-credit">FORMACIÓN: MICHAEL BRAUER · JAYCEN JOSHUA</div>
+        </div>
         <div class="studio-arrow">↗</div>
       </a>
 
       <a href="/servicios/musica-original/" class="studio-item reveal">
         <div class="studio-num">04</div>
         <div class="studio-name">Música <em>original</em></div>
-        <div class="studio-desc">Composición a medida para cine, publicidad, instalaciones, proyectos editoriales.</div>
+        <div class="studio-info">
+          <div class="studio-desc">Composición a medida para cine, publicidad, instalaciones, proyectos editoriales.</div>
+          <div class="studio-credit">NETFLIX · CIRQUE DU SOLEIL · MURO</div>
+        </div>
         <div class="studio-arrow">↗</div>
       </a>
 
       <a href="/servicios/ome-dj/" class="studio-item reveal">
         <div class="studio-num">05</div>
         <div class="studio-name">Ōme <em>— DJ &amp; Live</em></div>
-        <div class="studio-desc">Sets ceremoniales para eventos curados, festivales y experiencias rituales.</div>
+        <div class="studio-info">
+          <div class="studio-desc">Sets ceremoniales para eventos curados, festivales y experiencias rituales.</div>
+        </div>
         <div class="studio-arrow">↗</div>
       </a>
     </div>
@@ -1354,11 +1368,27 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
 
 .studio-name em { font-style: italic; color: var(--accent-gold); }
 
+.studio-info {
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .studio-desc {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.55;
-  max-width: 240px;
+}
+
+.studio-credit {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.6;
+  opacity: 0.4;
 }
 
 .studio-arrow {
@@ -1368,6 +1398,113 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   text-align: right;
   transition: transform 0.3s ease, color 0.3s ease;
   display: inline-block;
+}
+
+/* --- STUDIO: interacción desktop (>= 1024px) --- */
+@media (min-width: 1024px) {
+  .studio-item {
+    position: relative;
+    grid-template-columns: 1fr 300px 80px;
+    padding: 36px 0 36px 120px;
+    transition: padding 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .studio-item:hover {
+    padding-top: 72px;
+    padding-bottom: 72px;
+    padding-left: 120px;
+  }
+
+  .studio-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: var(--accent-blood);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .studio-item:hover::after { transform: scaleX(1); }
+
+  .studio-num {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(48px, 4vw, 72px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: rgba(26, 24, 20, 0.12);
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+    transition: color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .studio-item:hover .studio-num {
+    color: rgba(26, 24, 20, 0.30);
+  }
+
+  .studio-info {
+    max-width: 300px;
+  }
+
+  .studio-name {
+    transition: color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .studio-desc {
+    transition: font-size 400ms cubic-bezier(0.16, 1, 0.3, 1), color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .studio-item:hover .studio-desc {
+    font-size: 15px;
+    color: var(--text-primary);
+  }
+
+  .studio-credit {
+    transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .studio-item:hover .studio-credit {
+    opacity: 1;
+  }
+
+  .studio-arrow {
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .studio-item:hover .studio-arrow {
+    transform: translate(8px, -8px);
+    color: var(--accent-blood);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .studio-item {
+    transition: none;
+  }
+  .studio-item:hover {
+    padding: 36px 0 36px 120px;
+  }
+  .studio-item::after {
+    display: none;
+  }
+  .studio-item:hover .studio-arrow {
+    transform: none;
+  }
+  .studio-item:hover .studio-desc {
+    font-size: 13px;
+  }
+  .studio-num,
+  .studio-credit,
+  .studio-desc,
+  .studio-name,
+  .studio-arrow {
+    transition-property: opacity, color;
+    transition-duration: 300ms;
+  }
 }
 
 /* OME */
@@ -1762,7 +1899,7 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
   .work-block { border-right: none; border-bottom: 1px solid var(--border-line); min-height: auto; }
   .bitacora-link:hover { padding-left: 0; }
   .studio-item { grid-template-columns: 60px 1fr 60px; }
-  .studio-desc { display: none; }
+  .studio-info { display: none; }
 }
 
 /* Scroll hint */
@@ -1854,16 +1991,19 @@ const pageDescription = 'César Del Pino — Sonic Anthropologist. Sound Artist 
     grid-column: 1;
     grid-row: 1;
   }
-  .studio-desc {
+  .studio-info {
     display: block;
     grid-column: 1;
     grid-row: 2;
-    font-size: 12px;
-    color: var(--text-muted);
     max-width: none;
     margin-top: 4px;
+  }
+  .studio-desc {
+    font-size: 12px;
+    color: var(--text-muted);
     line-height: 1.5;
   }
+  .studio-credit { display: none; }
   .studio-arrow {
     grid-column: 2;
     grid-row: 1 / 3;
